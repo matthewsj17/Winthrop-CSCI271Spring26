@@ -1,0 +1,65 @@
+
+
+double A, T, M, F; // scores/averages used in the final grade calculation
+double assignments[7]; // an array of the 7 assignments used to calculate A
+double tests[7]; // an array of the 7 tests used to calculate T
+
+double E = ((0.4 * F) + (0.2 * M) + (0.1 * T)) / 70;
+
+double G; // final grade determined bty following if blocks.
+
+if (E >= 80){
+    G = 0.4F + 0.2M + 0.1T + 0.3A
+}
+else if (E < 80 && E >= 60){
+    (1 −W )E +WA if 60
+}
+else if (E < 60){
+    G = E
+}
+
+
+
+
+
+
+
+
+vvvv From Syllabus vvvv
+
+Grades & Evaluation
+Students will be assessed based on programming as-
+signments, in-class tests, a midterm exam and a final
+exam. The final exam will cover all material taught
+in the term. The final grade (G) will be calculated as
+shown below using:
+• A = average score on assignments
+• T = average score on in-class tests
+• M = score on the midterm exam
+• F = score on the final exam
+Calculate:
+E = 0.4 × F + 0.2 × M + 0.1 × T
+70
+The final grade G is:
+E if E < 60
+
+(1 −W )E +WA if 60 ≤ E < 80
+
+0.4F + 0.2M + 0.1T + 0.3A if E ≥ 80
+
+where
+W = E − 60
+20 × 0.3
+
+Important Notes:
+• If the combined scores of tests and exams E < 60%,
+the final grade will be below 60%. This means that a
+student needs to earn at least 60% on the combined
+tests and exams (E) to pass the course.
+• When E ≥ 80%, the weight of tests and exams will
+be 70%, and the weight of assignments will be 30%.
+• Finally, when E is between 60% and 80%, the weight
+of assignments will increase based on the student’s
+performance on tests and exams from 0% to a maxi-
+mum of 30%, and the weight of tests and exams will
+also decrease from 100% to 70% accordingl
