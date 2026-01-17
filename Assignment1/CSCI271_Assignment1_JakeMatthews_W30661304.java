@@ -36,6 +36,8 @@
 
 
 import java.util.Scanner;
+
+import javax.swing.plaf.basic.BasicInternalFrameTitlePane.SystemMenuBar;
 public class CSCI271_Assignment1_JakeMatthews_W30661304 { //matches fileName
     public static void main(String[] args) { // equivalent to C++'s 'int main()'
     
@@ -43,6 +45,7 @@ public class CSCI271_Assignment1_JakeMatthews_W30661304 { //matches fileName
     double A, T, M, F; // Variables used in the final Grade calculation.
     double assignments[] = new double[7]; // This is an array with 7 'spaces' to be filled with assignment scores.
     double tests[] = new double[7]; // Similarly, this is an array to be filled with test scores.
+    
     
 
     Scanner input = new Scanner(System.in); // A Scanner Object, to read input from the terminal.
@@ -89,6 +92,34 @@ public class CSCI271_Assignment1_JakeMatthews_W30661304 { //matches fileName
     }
     T = testTotal / 7.0;
 
-    // Creating E
+    
+    
+    // Determining Which G to use.
+    double G; // Final Grade
+    double E = ((0.4 * F) + (0.2 * M) + (0.1 * T)) / 70;; // ?? 
+    double W; // variable used in the case of E being between 60 and 80.
+
+    W = ((E - 60) / 20) * 0.3;
+
+
+    if (E >= 80){
+        G = (0.4 * F) + (0.2 * M) + (0.1 * T) + (0.3 * A);
     }
+    else if (E < 80 && E >= 60){
+        G = ((1 - W) * E) + (W * A);
+    }
+    else if (E < 60){
+        G = E;
+    }
+    else{
+        System.err.println("Something went wrong, retry the program!");
+        System.exit(0);
+    }
+
+    // Output Final Grade
+
+    System.out.print("The final grade is: ");
+    System.out.print(G);
+
+}
 }
