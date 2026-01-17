@@ -49,7 +49,7 @@ public class CSCI271_Assignment1_JakeMatthews_W30661304 { //matches fileName
 
     // Read In Information from the User.
 
-    System.out.print("Enter All Assignment Grades Seperated by Whitespace. (ie: 70 50 35... etc)");
+    System.out.print("Enter All Assignment Grades Seperated by Whitespace on the same line. (ie: 70 50 35... etc): ");
 
     int num = 0; // incrementation number
     for(double assignment : assignments){
@@ -57,20 +57,38 @@ public class CSCI271_Assignment1_JakeMatthews_W30661304 { //matches fileName
         assignments[num] = assignment;
         num++;
     }
-    
+    System.out.print("Enter All Test Grades Seperated by Whitespace on the same line. (ie: 70 50 35... etc): ");
 
-    // M = input.nextDouble();
-    // F = input.nextDouble();
-
-    input.close();
-
-    // System.out.print(M);
-    // System.out.print(F);
-
-    num = 0;
-    for(double assignment : assignments){
-        System.out.print(assignments[num]);
+    num = 0; // incrementation number
+    for(double test : tests){
+        test = input.nextDouble();
+        tests[num] = test;
+        num++;
     }
 
+    System.out.print("Enter Midterm Grade: ");
+    M = input.nextDouble();
+   
+
+    System.out.print("Enter Final Grade: ");
+    F = input.nextDouble();
+    
+    input.close();
+
+    // Averaging Grades (Creating A, and T)
+
+    double assignmentTotal = 0;
+    for (int i = 0; i < assignments.length; ++i) {
+        assignmentTotal += assignments[i];
+    }
+    A = assignmentTotal / 7.0;
+
+    double testTotal = 0;
+    for (int i = 0; i < tests.length; ++i){
+        testTotal += tests[i];
+    }
+    T = testTotal / 7.0;
+
+    // Creating E
     }
 }
