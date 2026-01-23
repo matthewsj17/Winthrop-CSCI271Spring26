@@ -114,14 +114,14 @@ public class CSCI271_Assignment1_JakeMatthews_W30661304 { //matches fileName
     }
     // If E does not fall under any of these categories, something has went wrong and we end the program prematurely.
     else{
-        System.err.println("Something went wrong, retry the program!");
-        G = 0;
-        System.exit(0);
+        System.err.println("Something went wrong, retry the program!"); // print error
+        G = 0; // assign final grade to 0
+        System.exit(0); // close java with an error
     }
 
     // Output Final Grade to the User.
-    System.out.print("The final grade is: ");
-    System.out.print(G);
+    System.out.print("The final grade is: "); // output prefix to grade
+    System.out.print(G); // output grade itself
 
 }
 }
