@@ -18,11 +18,16 @@ public class Fraction {
         String num = "";
         String den = "";
 
+        num = String.valueOf(f.numerator);
+
         if(f.denominator == 1){
-            num = String.valueOf(f.numerator);
             den = "1";
-            out = num + "/" + den;
         }
+        else{
+            den = String.valueOf(f.denominator);
+        }
+        
+        out = num + "/" + den;
 
         return out;
     }
