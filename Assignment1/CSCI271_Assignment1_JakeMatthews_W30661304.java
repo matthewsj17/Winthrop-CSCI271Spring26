@@ -96,7 +96,7 @@ public class CSCI271_Assignment1_JakeMatthews_W30661304 { //matches fileName
 
     
     
-    // Determining Which G to use. (PieceWise Function)
+    // Determining Which G to use. (PieceWise Function) [The Error Described was found in E's equation. .70 is needed instead of 70 to prevent E from being smaller than 1.
     double G; // Final Grade
     double E = ((0.4 * F) + (0.2 * M) + (0.1 * T)) / .70; // this is a variable used in the grade calculation's piecewise function.
     double W = ((E - 60) / 20) * 0.3; // variable used in the case of E being between 60 and 80.
@@ -114,14 +114,14 @@ public class CSCI271_Assignment1_JakeMatthews_W30661304 { //matches fileName
     }
     // If E does not fall under any of these categories, something has went wrong and we end the program prematurely.
     else{
-        System.err.println("Something went wrong, retry the program!");
-        G = 0;
-        System.exit(0);
+        System.err.println("Something went wrong, retry the program!"); // print error
+        G = 0; // assign final grade to 0
+        System.exit(0); // close java with an error
     }
 
     // Output Final Grade to the User.
-    System.out.print("The final grade is: ");
-    System.out.print(G);
+    System.out.print("The final grade is: "); // output prefix to grade
+    System.out.print(G); // output grade itself
 
 }
 }
