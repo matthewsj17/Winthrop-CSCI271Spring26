@@ -20,14 +20,33 @@ public class Fraction {
 
         num = String.valueOf(f.numerator);
 
+        if(f.denominator == 0){
+            int numeratorSignage = Long.signum(f.numerator);
+
+            switch(numeratorSignage){
+                case -1:
+                    out = "-Infinity";
+                case 0:
+                    out = "NaN";
+                case 1:
+                    out = "Infinity";
+
+                default:
+                    System.err.println("Something went wrong!");
+                    break;
+            }
+        }
+
         if(f.denominator == 1){
             den = "1";
+            out = num + "/" + den;
         }
-        else{
+        if(f.denominator!= 0 && f.denominator != 1){
             den = String.valueOf(f.denominator);
+            out = num + "/" + den;
         }
         
-        out = num + "/" + den;
+        
 
         return out;
     }
