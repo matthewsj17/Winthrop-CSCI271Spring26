@@ -1,11 +1,16 @@
+import java.util.Scanner;
+
 public class CSCI271_Assignment2_JakeMatthews {
     public static void main(String[] args) { 
-        
-        
-        Fraction test = new Fraction(-1, 5);
+         Scanner input = new Scanner(System.in);
+        long num = input.nextLong();
+        long den = input.nextLong();
+        Fraction test = new Fraction(num, den);
         String testPrint = test.fracToString();
     
         System.out.println(testPrint);
+
+        input.close();
     
     
     }

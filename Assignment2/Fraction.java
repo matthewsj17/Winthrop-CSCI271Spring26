@@ -20,25 +20,25 @@ public class Fraction {
         int numeratorSignage = Long.signum(numerator);
         int denominatorSignage = Long.signum(denominator);
 
-        num = String.valueOf(numerator);
-
         if(denominator == 0){
             switch(numeratorSignage){
                 case -1:
                     out = "-Infinity";
+                    break;
                 case 0:
                     out = "NaN";
+                    break;
                 case 1:
                     out = "Infinity";
-
-                default:
-                    System.err.println("Something went wrong!");
                     break;
+
             }
         }
+
+        num = String.valueOf(numerator);
         if(denominator == 1){
             den = "1";
-            out = num + "/" + den;
+            out = num;
         }
         if(denominator!= 0 && denominator != 1){
             den = String.valueOf(denominator);
@@ -46,7 +46,9 @@ public class Fraction {
         }
         
         if((numeratorSignage == -1 && denominatorSignage == -1)){
-            out =  num + "/" + den;
+            num = num.substring(1); // this removes the first character of the string. "-"
+            den = den.substring(1); // this removes the first character of the string. "-
+            out = num + "/" + den; // output
         }
 
         return out;
