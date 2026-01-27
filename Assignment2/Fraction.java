@@ -13,16 +13,16 @@ public class Fraction {
         denominator = b;
     }
 
-    public String toString(Fraction f){
+    public String fracToString(){
         String out = "";
         String num = "";
         String den = "";
+        int numeratorSignage = Long.signum(numerator);
+        int denominatorSignage = Long.signum(denominator);
 
-        num = String.valueOf(f.numerator);
+        num = String.valueOf(numerator);
 
-        if(f.denominator == 0){
-            int numeratorSignage = Long.signum(f.numerator);
-
+        if(denominator == 0){
             switch(numeratorSignage){
                 case -1:
                     out = "-Infinity";
@@ -36,17 +36,18 @@ public class Fraction {
                     break;
             }
         }
-
-        if(f.denominator == 1){
+        if(denominator == 1){
             den = "1";
             out = num + "/" + den;
         }
-        if(f.denominator!= 0 && f.denominator != 1){
-            den = String.valueOf(f.denominator);
+        if(denominator!= 0 && denominator != 1){
+            den = String.valueOf(denominator);
             out = num + "/" + den;
         }
         
-        
+        if((numeratorSignage == -1 && denominatorSignage == -1)){
+            out =  num + "/" + den;
+        }
 
         return out;
     }
