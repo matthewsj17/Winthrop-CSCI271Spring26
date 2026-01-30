@@ -105,6 +105,16 @@ public class Fraction {
         return new Fraction(newNum, newDen);
     }
 
+    public Fraction subtract(Fraction inFrac){
+        long newDen = this.getDenominator() * inFrac.getDenominator();
+        long nTemp1 = this.getNumerator() * inFrac.getDenominator();
+        long nTemp2 = inFrac.getNumerator() * this.getDenominator();
+        long newNum = nTemp1 - nTemp2;
+
+        return new Fraction(newNum, newDen);
+    }
+
+
 
 
 
