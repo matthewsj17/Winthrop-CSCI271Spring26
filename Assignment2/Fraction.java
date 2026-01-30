@@ -39,11 +39,62 @@ public class Fraction {
         return a;
     }
 
-    // @Override
-    // public String toString(){
-        
+    @Override
+    public String toString(){
+        String output = "";
+        long n = this.getNumerator();
+        long d = this.getDenominator();
 
-    // }
+        int nSign = Long.signum(n);
+        int dSign = Long.signum(d);
+
+        // Handling assigning the negative sign to the numerator if present in denominator.
+        // THIS ALL MIGHT BE REDUNDANT GCD SEEMS TO SOLVETHIS
+        if(nSign == 1 && dSign == -1){
+            nSign = -1;
+            dSign = 1;
+            n *= -1;
+            d *= -1;
+        }
+        else if(nSign == -1 && dSign == -1){
+            nSign = 1;
+            dSign = 1;
+            n *= -1;
+            d *=-1;
+        }
+
+        // Cases where not a number is outputted.
+        if(d == 0){
+            switch(nSign){
+                case -1:
+                    output = "-Infinity";
+                    break;
+                case 0:
+                    output = "NaN";
+                    break;
+                case 1:
+                    output = "Infinity";
+                    break;
+
+            }
+        }
+        else if(n == 0){
+            output = "0";
+        }
+        // Cases where a number is outputted
+        else if(d == 1){
+            output = Long.toString(n);
+        }
+        else{
+            output = output + Long.toString(n) + "/" + Long.toString(d);
+        }
+
+
+
+        return output;
+
+
+    }
 
 
 
