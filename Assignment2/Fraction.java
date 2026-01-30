@@ -5,6 +5,9 @@ public class Fraction {
 
 
     public Fraction(long a, long b){
+        long gcd = gcd(a, b);
+        a /= gcd;
+        b /= gcd;
         this.numerator = a;
         this.denominator = b;
     }
@@ -22,31 +25,25 @@ public class Fraction {
     }
 
     public long gcd(long a, long b){
-        if (a < 0){
+        if (a < 0){ 
             a = -a;
-            while(b != 0){
-                int remainder = a % b;
+        }
+        while(b != 0){
+                long remainder = a % b;
                 a = b;
                 b = remainder;
-            }
-            if(a == 0){
+        }
+        if(a == 0){
                 a = 1;
-            }
         }
         return a;
     }
 
+    // @Override
+    // public String toString(){
+        
 
-    // gcd( a, b ):
-    //  if ( a < 0 ) 
-    //      then a = -a // to avoid sign problems
-    //      while b != 0:
-    //          remainder = a % b
-    //          a = b
-    //          b = remainder
-    //      if a == 0
-    //          a = 1
-    // return a
+    // }
 
 
 

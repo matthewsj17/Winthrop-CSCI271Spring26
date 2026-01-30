@@ -6,7 +6,7 @@ public class CSCI271_Assignment2_JakeMatthews {
         long num = input.nextLong();
         long den = input.nextLong();
         Fraction test = new Fraction(num, den);
-        String testPrint = test.fracToString();
+        String testPrint = test.toString();
     
         System.out.println(testPrint);
 
