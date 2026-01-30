@@ -50,18 +50,18 @@ public class Fraction {
 
         // Handling assigning the negative sign to the numerator if present in denominator.
         // THIS ALL MIGHT BE REDUNDANT GCD SEEMS TO SOLVETHIS
-        if(nSign == 1 && dSign == -1){
-            nSign = -1;
-            dSign = 1;
-            n *= -1;
-            d *= -1;
-        }
-        else if(nSign == -1 && dSign == -1){
-            nSign = 1;
-            dSign = 1;
-            n *= -1;
-            d *=-1;
-        }
+        // if(nSign == 1 && dSign == -1){
+        //     nSign = -1;
+        //     dSign = 1;
+        //     n *= -1;
+        //     d *= -1;
+        // }
+        // else if(nSign == -1 && dSign == -1){
+        //     nSign = 1;
+        //     dSign = 1;
+        //     n *= -1;
+        //     d *=-1;
+        // }
 
         // Cases where not a number is outputted.
         if(d == 0){
@@ -96,6 +96,14 @@ public class Fraction {
 
     }
 
+    public Fraction add(Fraction inFrac){
+        long newDen = this.getDenominator() * inFrac.getDenominator();
+        long nTemp1 = this.getNumerator() * inFrac.getDenominator();
+        long nTemp2 = inFrac.getNumerator() * this.getDenominator();
+        long newNum = nTemp1 + nTemp2;
+        
+        return new Fraction(newNum, newDen);
+    }
 
 
 
