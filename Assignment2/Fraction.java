@@ -114,8 +114,27 @@ public class Fraction {
         return new Fraction(newNum, newDen);
     }
 
+    public Fraction multiply(Fraction inFrac){
+        long newDen = this.getDenominator() * inFrac.getDenominator();
+        long newNum = this.getNumerator() * inFrac.getNumerator();
+        
+        return new Fraction(newNum, newDen);
+    }
 
+    public Fraction divide(Fraction inFrac){
+        long newNum = this.getNumerator() * inFrac.getDenominator();
+        long newDen = this.getDenominator() * inFrac.getNumerator();
 
+        return new Fraction(newNum, newDen);
+    }
+
+    public Fraction negate(Fraction inFrac){
+        long newNum = this.getNumerator() * -1;
+
+        return new Fraction(newNum, this.getDenominator());
+    }
+
+    
 
 
 }
