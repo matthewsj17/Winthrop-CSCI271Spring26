@@ -128,10 +128,41 @@ public class Fraction {
         return new Fraction(newNum, newDen);
     }
 
-    public Fraction negate(Fraction inFrac){
+    public Fraction negate(){
         long newNum = this.getNumerator() * -1;
 
         return new Fraction(newNum, this.getDenominator());
+    }
+
+
+    public Fraction pow(int inPow){
+        long newNum = this.getNumerator();
+        long newDen = this.getDenominator();
+
+
+        if(inPow > 0){
+        for(int i=0; i <inPow; i++){
+            newNum *= this.getNumerator();
+            newDen *= this.getDenominator();
+        }
+        }
+
+        else if(inPow < 0){
+            long temp = newNum;
+            newNum = newDen;
+            newDen = temp;
+            oldNum = 
+            for(int i=0; i > inPow; i--){
+            newNum *= this.getNumerator();
+            newDen *= this.getDenominator();
+        }
+        }
+        else if(inPow == 0){
+            newNum = 1;
+            newDen = 1;
+        }
+
+        return new Fraction(newNum, newDen);
     }
 
     
