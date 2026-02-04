@@ -46,7 +46,7 @@ public class Fraction {
         long d = this.getDenominator();
 
         int nSign = Long.signum(n);
-        int dSign = Long.signum(d);
+        // int dSign = Long.signum(d);
 
         // Handling assigning the negative sign to the numerator if present in denominator.
         // THIS ALL MIGHT BE REDUNDANT GCD SEEMS TO SOLVETHIS
@@ -136,33 +136,58 @@ public class Fraction {
 
 
     public Fraction pow(int inPow){
-        long newNum = this.getNumerator();
-        long newDen = this.getDenominator();
+
+        // try looping the multiplication function.
+        
+
+        Fraction tempFrac = new Fraction(this.getNumerator(), this.getDenominator());
 
 
-        if(inPow > 0){
-        for(int i=0; i <inPow; i++){
-            newNum *= this.getNumerator();
-            newDen *= this.getDenominator();
-        }
+        if(inPow == 0){ // if the power is 0, we just return a fraction of '1' as out answer. 
+            tempFrac = new Fraction(1);
+            return tempFrac;
         }
 
-        else if(inPow < 0){
-            long temp = newNum;
-            newNum = newDen;
-            newDen = temp;
-            oldNum = 
-            for(int i=0; i > inPow; i--){
-            newNum *= this.getNumerator();
-            newDen *= this.getDenominator();
-        }
-        }
-        else if(inPow == 0){
-            newNum = 1;
-            newDen = 1;
+        if(inPow < 0){ // set tempFrac to the reciprocal of itself, that way it can be multiplied to find the correct value.
+            long newNum = tempFrac.getDenominator();
+            long newDen = tempFrac.getNumerator();
+            tempFrac = new Fraction(newNum, newDen);
+            inPow *= -1; // flips sign of inPow so it functions in the next for loop as intended.
         }
 
-        return new Fraction(newNum, newDen);
+        for(int i = 1; i < inPow; i++){
+                tempFrac = tempFrac.multiply(tempFrac);
+        }
+        
+        
+
+        return tempFrac;
+
+        // long newNum = this.getNumerator();
+        // long newDen = this.getDenominator();
+        // if(inPow > 0){
+        // for(int i=0; i <inPow; i++){
+        //     newNum *= this.getNumerator();
+        //     newDen *= this.getDenominator();
+        // }
+        // }
+
+        // else if(inPow < 0){
+        //     long temp = newNum;
+        //     newNum = newDen;
+        //     newDen = temp;
+        //     // oldNum = 
+        //     for(int i=0; i > inPow; i--){
+        //     newNum *= this.getNumerator();
+        //     newDen *= this.getDenominator();
+        // }
+        // }
+        // else if(inPow == 0){
+        //     newNum = 1;
+        //     newDen = 1;
+        // }
+
+        // return new Fraction(newNum, newDen);
     }
 
     
