@@ -27,7 +27,6 @@
 * interfere with the normal operation of the supplied grading code.
 *
 * Jake Matthews
-* W30661304
 ********************************************************************/
 
 
