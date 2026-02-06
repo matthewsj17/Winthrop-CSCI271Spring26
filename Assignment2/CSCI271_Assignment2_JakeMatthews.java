@@ -141,6 +141,17 @@ public class CSCI271_Assignment2_JakeMatthews {
             }
         }
 
+	// Testing Rubric Example
+
+	System.out.println("Testing Example From Rubric");
+	Fraction a = new Fraction(16); // create fraction
+	Fraction b = new Fraction(3,5).add(new Fraction(7)); // create fraction through addition
+	Fraction c = new Fraction(6,7); // create fraction
+	Fraction results = c.multiply(a.divide(b)); // create fraction through multiplication and division
+	System.out.println(results);  // should print "240/133"
+
+
+
 
     }
 }
