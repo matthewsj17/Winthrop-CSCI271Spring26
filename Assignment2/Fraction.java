@@ -7,7 +7,7 @@ public class Fraction {
     * Description: Constructions a fraction with specified numerator and denominator.
     * Parameters: long a, long b
     * Pre: long a and long b must be supplied.
-    * Post: 
+    * Post: A fraction is created.
     * Returns: A new object of the fraction class, numerator set to a, denominator set to b. 
     * Called by: add(), subtract(), multiply(), divide(), negate(), pow()
     * Calls: gcd()
@@ -24,7 +24,7 @@ public class Fraction {
     * Description: Constructions a fraction with specified numerator.
     * Parameters: long a
     * Pre: long a must be supplied.
-    * Post: 
+    * Post: A fraction is created.
     * Returns: A new object of the fraction class, numerator set to a, denominator set to 1. 
     * Called by: pow()
     * Calls: n/a 
@@ -90,7 +90,7 @@ public class Fraction {
     * Description: Prints the fraction class in a custom manner.
     * Parameters: n/a
     * Pre: A fraction must be created to call this function.
-    * Post: 
+    * Post: The fraction is described as intended and returned to the user or the console.
     * Returns: A string describing the fraction will be returned to the user. 
     * Called by: n/a
     * Calls: getNumerator(), getDenominator()
@@ -102,7 +102,7 @@ public class Fraction {
         long d = this.getDenominator(); // get the denominator value
 
         int nSign = Long.signum(n); // Long.signum(n) gives us the signage of n. -1 = negative, 0 = 0, 1 = postive
-        int dSign = Long.signum(n); // Long.signum(n) gives us the signage of n. -1 = negative, 0 = 0, 1 = postive
+        int dSign = Long.signum(d); // Long.signum(n) gives us the signage of n. -1 = negative, 0 = 0, 1 = postive
         
         // Handling assigning the negative sign to the numerator if present in denominator.
         if(nSign == 1 && dSign == -1){ // if Denominator is Negative and Numerator Positive,
@@ -156,7 +156,7 @@ public class Fraction {
     * Description: Adds two fractions together.
     * Parameters: Fraction inFrac
     * Pre: A fraction must be created to call this function.
-    * Post: 
+    * Post: A result is calculated and returned.
     * Returns: A new fraction, which is the result of the two supplied.
     * Called by: n/a 
     * Calls: getNumerator(), getDenominator()
@@ -175,7 +175,7 @@ public class Fraction {
     * Description: Subtracts two fractions.
     * Parameters: Fraction inFrac
     * Pre: A fraction must be created to call this function.
-    * Post: 
+    * Post: The difference is calculated and returned to the user.
     * Returns: A new fraction, which is the difference of the two supplied.
     * Called by: n/a 
     * Calls: getNumerator(), getDenominator()
@@ -194,7 +194,7 @@ public class Fraction {
     * Description: Multiplies two fractions.
     * Parameters: Fraction inFrac
     * Pre: A fraction must be created to call this function.
-    * Post: 
+    * Post: The product is calculated and returned to the user.
     * Returns: A new fraction, which is the product of the two supplied.
     * Called by: pow() 
     * Calls: getNumerator(), getDenominator()
@@ -211,7 +211,7 @@ public class Fraction {
     * Description: Divides two fractions.
     * Parameters: Fraction inFrac
     * Pre: A fraction must be created to call this function.
-    * Post: 
+    * Post: The quotient is calculated and returned to the user.
     * Returns: A new fraction, which is the quotient of the two supplied.
     * Called by: n/a 
     * Calls: getNumerator(), getDenominator()
@@ -229,7 +229,7 @@ public class Fraction {
     * Description: Reverses the sign of the fraction in question.
     * Parameters: n/a
     * Pre: A fraction must be created to call this function.
-    * Post: 
+    * Post: The negative of the fraction is calculated and returned to main.
     * Returns: A new fraction, which is the opposite signage of the one supplied.
     * Called by: n/a 
     * Calls: getNumerator(), getDenominator()
@@ -247,7 +247,7 @@ public class Fraction {
     * Description: Sets a fraction to a given exponential power.
     * Parameters: int inPow
     * Pre: A fraction must be created to call this function.
-    * Post: 
+    * Post: A new fraction, which is to the power supplied is calculated
     * Returns: A new fraction, which is to the power supplied.
     * Called by: n/a 
     * Calls: Fraction(), getNumerator(), getDenominator(), multiply()
@@ -281,6 +281,4 @@ public class Fraction {
     }
 
     
-
-
 }
