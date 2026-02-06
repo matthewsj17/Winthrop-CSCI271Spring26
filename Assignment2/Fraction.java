@@ -102,6 +102,21 @@ public class Fraction {
         long d = this.getDenominator(); // get the denominator value
 
         int nSign = Long.signum(n); // Long.signum(n) gives us the signage of n. -1 = negative, 0 = 0, 1 = postive
+        int dSign = Long.signum(n); // Long.signum(n) gives us the signage of n. -1 = negative, 0 = 0, 1 = postive
+        
+        // Handling assigning the negative sign to the numerator if present in denominator.
+        if(nSign == 1 && dSign == -1){ // if Denominator is Negative and Numerator Positive,
+            nSign = -1; // set numerator negative
+            dSign = 1; // set denominator negative
+            n *= -1; // flip sign of numerator
+            d *= -1; // flip sign of denominator
+        }
+        else if(nSign == -1 && dSign == -1){ // if both signs are negative
+            nSign = 1; // set numerator to positive
+            dSign = 1; // set denominator to positive
+            n *= -1; // flip sign of numerator
+            d *=-1; // flip sign of denominator
+        }
         
         // Cases where not a number is outputted.
         // If the denominator is 0, then a number can not be sent to output.

@@ -36,13 +36,7 @@ public class CSCI271_Assignment2_JakeMatthews {
         Fraction TestingArray[] = new Fraction[7];
 
         // Req Fractions
-        // 6/-24
-        // 0/8
-        // 8/-6
-        // 23/0
-        // -6/0
-        // 7/1
-        // 0/0
+        // 6/-24, 0/8, 8/-6, 23/0, -6/0, 7/1, 0/0
         TestingArray[0] = new Fraction(6, -24);
         TestingArray[1] = new Fraction(0, 8);
         TestingArray[2] = new Fraction(8, -6);
@@ -52,56 +46,74 @@ public class CSCI271_Assignment2_JakeMatthews {
         TestingArray[6] = new Fraction(0, 0);
 
         System.out.println("---Testing Implementation of Fraction Class---");
-        System.out.println("\n"+ "1) Construction of Fractions");
+        System.out.println("\n"+ "1) Construction of Fractions & 2) toString() Function");
 
         System.out.println("a) GCD Algorithm: 6/-24 => -1/4");
 
-        for(int i = 0; i < TestingArray.length; i++){
-            System.out.print("Numerator: " + TestingArray[i].getNumerator());
-            System.out.println(" Denominator: " + TestingArray[i].getDenominator());
-        }
+        System.out.println(new Fraction(1, -4));
+        System.out.println(TestingArray[2]);
 
         System.out.println("b) Numbers 7/1: 7 => 0/1");
+
+        System.out.println(TestingArray[5]);
+
+        System.out.println("c) 0 Cases: 0, -Infinity, NaN, Infinity");
+        System.out.println(TestingArray[1]);
+        System.out.println(TestingArray[3]);
+        System.out.println(TestingArray[4]);
+        System.out.println(TestingArray[6]);
+
+        System.out.println("d) SPECIAL CASE: Double Negative (-1/-4) => (1/4)");
+        System.out.println(new Fraction(-1, -4));
+
         
-        for(int i = 0; i< TestingArray.length; i++){
-            // System.out.print()
-        }
-    //     Fraction fractionTest3 = new Fraction(7);
-    //     System.out.print("Numerator: " + fractionTest3.getNumerator());
-    //     System.out.println(" Denominator: " + fractionTest3.getDenominator() + "\n");
-
-
-        System.out.println("2) toString() Function");
-        for(int i = 0; i < TestingArray.length; i++){
-            System.out.println(TestingArray[i]);
-        }
-
+        
         System.out.println("3) Mathematical Functions");
 
         System.out.println("a) add()");
-        for(int i = 0; i < TestingArray.length/2; i++){
-            System.out.println(TestingArray[i].add(TestingArray[i+1]));
+        for(int i = 0; i < TestingArray.length; i++){
+            System.out.println(TestingArray[i].add(new Fraction(1,2))); // Tests Normal Adding
+            System.out.println(TestingArray[i].add(new Fraction(-1,2))); // Tests Negative Adding
+            System.out.println(TestingArray[i].add(new Fraction(0,2))); // Tests 0 Adding
+            System.out.println(TestingArray[i].add(new Fraction(1,0))); // Tests Infinity Adding
+            System.out.println(TestingArray[i].add(new Fraction(-1,0))); // Tests -Infinity Adding
+            System.out.println(TestingArray[i].add(new Fraction(0,0))); // Tests NaN Adding
         }
 
         System.out.println("b) subtract()");
-        for(int i = 0; i < TestingArray.length/2; i++){
-            System.out.println(TestingArray[i].subtract(TestingArray[i+1]));
+        for(int i = 0; i < TestingArray.length; i++){
+            System.out.println(TestingArray[i].subtract(new Fraction(1,2))); // Tests Normal subtracting
+            System.out.println(TestingArray[i].subtract(new Fraction(-1,2))); // Tests Negative subtracting
+            System.out.println(TestingArray[i].subtract(new Fraction(0,2))); // Tests 0 subtracting
+            System.out.println(TestingArray[i].subtract(new Fraction(1,0))); // Tests Infinity subtracting
+            System.out.println(TestingArray[i].subtract(new Fraction(-1,0))); // Tests -Infinity subtracting
+            System.out.println(TestingArray[i].subtract(new Fraction(0,0))); // Tests NaN subtracting
         }
 
         System.out.println("c) multiply()");
-        for(int i = 0; i < TestingArray.length/2; i++){
-            System.out.println(TestingArray[i].multiply(TestingArray[i+1]));
+        for(int i = 0; i < TestingArray.length; i++){
+            System.out.println(TestingArray[i].multiply(new Fraction(1,2))); // Tests Normal multiplying
+            System.out.println(TestingArray[i].multiply(new Fraction(-1,2))); // Tests Negative multiplying
+            System.out.println(TestingArray[i].multiply(new Fraction(0,2))); // Tests 0 multiplying
+            System.out.println(TestingArray[i].multiply(new Fraction(1,0))); // Tests Infinity multiplying
+            System.out.println(TestingArray[i].multiply(new Fraction(-1,0))); // Tests -Infinity multiplying
+            System.out.println(TestingArray[i].multiply(new Fraction(0,0))); // Tests NaN multiplying
         }
         
         System.out.println("d) divide()");
         for(int i = 0; i < TestingArray.length/2; i++){
-            System.out.println(TestingArray[i].divide(TestingArray[i+1]));
+            System.out.println(TestingArray[i].divide(new Fraction(1,2))); // Tests Normal dividing
+            System.out.println(TestingArray[i].divide(new Fraction(-1,2))); // Tests Negative dividing
+            System.out.println(TestingArray[i].divide(new Fraction(0,2))); // Tests 0 dividing
+            System.out.println(TestingArray[i].divide(new Fraction(1,0))); // Tests Infinity dividing
+            System.out.println(TestingArray[i].divide(new Fraction(-1,0))); // Tests -Infinity dividing
+            System.out.println(TestingArray[i].divide(new Fraction(0,0))); // Tests NaN dividing
         }
 
 
         System.out.println("e) negate()");
         for(int i = 0; i < TestingArray.length; i++){
-            System.out.println(TestingArray[i].negate());
+            System.out.println(TestingArray[i].negate()); // Tests Negate on the 7 Req Fractions
         }
 
         System.out.println("f) pow()");
