@@ -60,7 +60,7 @@ public class CSCI271_Assignment2_JakeMatthews {
         System.out.println(frac0);
         System.out.println(frac2);
 
-        System.out.println("b) Numbers 7/1: 7 => 0/1");
+        System.out.println("b) Numbers 7/1 => 7");
         System.out.println(frac5);
 
         System.out.println("c) 0 Cases: 0, -Infinity, NaN, Infinity");
