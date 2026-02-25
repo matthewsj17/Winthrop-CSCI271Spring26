@@ -39,6 +39,24 @@
 import java.util.Scanner;
 public class CSCI271_Assignment3_JakeMatthewsQ2{
 
+
+    /*****************************charNum()****************************
+    * Description: This functions finds the number of times a character
+    * occurs in a string. (CASE SENSITIVE)
+    *
+    * Parameters: String s, char c, int charCount
+    *
+    * Pre: A specific string and character must be supplied to the function 
+    * (charCount is always 0 at start)
+    *
+    * Post: The value of c's occurances in s is found.
+    *
+    * Returns: The function returns charCount, an int with the number of c's
+    * occurances in s. 
+    *
+    * Called by: charNum()
+    * Calls: charNum()
+    ************************************************************************/
     public static int charNum(String s, char c, int charCount){
     //Basecase: if the string is empty, then we return the number of times c appears 
     if(s == ""){
@@ -46,10 +64,12 @@ public class CSCI271_Assignment3_JakeMatthewsQ2{
     }
     // Recursive Case 
     else{
-        if(s.charAt(0) == c){
+        // if the first character of the string is the character we are looking for, increment charCount.
+        if(s.charAt(0) == c){ 
             charCount += 1;
         }
-        return charNum(s.substring(1), c, charCount);
+        
+        return charNum(s.substring(1), c, charCount); // call charNum again, missing the first character of s.
     }
 }
 
@@ -63,17 +83,17 @@ public class CSCI271_Assignment3_JakeMatthewsQ2{
 
     public static void main(String[] args) {
         
-        Scanner input = new Scanner(System.in);
+        Scanner input = new Scanner(System.in); // create input object
         
         System.out.print("Enter the string to search: ");
-        String testString = input.nextLine();
+        String testString = input.nextLine(); // initialize string to search
         System.out.print("Enter the character to search for: ");
-        char testChar = input.next().charAt(0);
+        char testChar = input.next().charAt(0); // initialize char to search for
 
-        int length = charNum(testString, testChar, 0);
+        int length = charNum(testString, testChar, 0); // initialize length, and assign it the value of the function call
 
-        System.out.println(testChar + " appears in " + testString + " " + length + " times.");
-        input.close();
+        System.out.println(testChar + " appears in " + testString + " " + length + " times."); // return value to user.
+        input.close(); // close input
 
     }
 
