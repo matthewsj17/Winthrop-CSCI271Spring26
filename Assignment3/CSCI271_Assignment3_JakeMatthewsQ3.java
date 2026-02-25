@@ -40,42 +40,60 @@ import java.util.Scanner;
 
 public class CSCI271_Assignment3_JakeMatthewsQ3{
 
+
+    /*****************************max()****************************
+    * Description: The function finds the maximum value within a given array.
+    *
+    * Parameters: int[] A, int numCount, int i
+    *
+    * Pre: The array A must be created and filled with integers before max
+    * can be called. 
+    *
+    * Post: The function will find the maximum value recursively.
+    *
+    * Returns: The function returns the maximum value found (type int).
+    *
+    * Called by: max()
+    * Calls: max()
+    ************************************************************************/
     public static int max(int[] A, int numCount, int i){
+        // assume the first number in the array is the max.
         int max = A[0];
-        //Basecase; if i  hits numCount, then we output whatever max is.
-        if(i == numCount-1){
+        //Basecase; if i  hits numCount (number of spots in the array), then we output whatever max is.
+        if(i == numCount){
             return max;
         }
-
+        // Recursive Case
         else{
-            int newA[] = Arrays.copyOfRange(A, 1, A.length);
-            int alternativeMax = max(newA, numCount, i+1);
-            if(max < alternativeMax){
-                return alternativeMax;
+            int newA[] = Arrays.copyOfRange(A, 1, A.length); // create new array, missing the first number.
+            int alternativeMax = max(newA, numCount, i+1); // find the max of this new array.
+            if(max < alternativeMax){ // compare the currentMax with the alternativeMax value.
+                return alternativeMax; // if alternative is larger, return the alternativeMax.
             }
-            return max;
+            return max; // otherwise return the max we got in this function call.
 
         }
     }
 
     public static void main(String[] args){
 
-        Scanner input = new Scanner(System.in);
+        Scanner input = new Scanner(System.in); // create input object
 
-        int numTotal = input.nextInt();
-        int numList[] = new int[numTotal];
+        int numTotal = input.nextInt(); //// allocate a number for the total amount in the array.
+        int numList[] = new int[numTotal]; // allocate space for the array in the heap.
 
+        // For every number in the array, prompt the user to enter a number.
         for(int i = 0; i < numTotal; i++){
             System.out.print("Enter your next number: ");
-            numList[i] = input.nextInt();
+            numList[i] = input.nextInt(); // assign this number to the next avaliable array space.
         }
 
         // Use max() to find the max.
-        int maxValue = max(numList, numList.length, 0);
+        int maxValue = max(numList, (numList.length-1), 0); // initialize maxValue and assign it to the recursive functions result.
         
-        System.out.println("The maximum value in the list is: " + maxValue);
+        System.out.println("The maximum value in the list is: " + maxValue); // return value to user.
 
-        input.close();
+        input.close(); // close input
 
 
     }

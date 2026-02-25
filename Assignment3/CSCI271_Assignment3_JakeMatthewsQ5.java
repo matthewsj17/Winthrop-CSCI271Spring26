@@ -71,16 +71,15 @@ public class CSCI271_Assignment3_JakeMatthewsQ5{
 
     public static void main(String[] args){
 
-        Scanner input = new Scanner(System.in);
+        Scanner input = new Scanner(System.in); // create input object
 
-        String inString = input.nextLine(); 
+        System.out.print("Enter the string to be reversed: ");
+        String inString = input.nextLine();  // allocate space for the string and initialize it.
 
-        String outString = reverse(inString, "");
+        String outString = reverse(inString, ""); // allocate space for outString, and call the reverse function.
 
-        System.out.println(inString + " printed backwards is: " + outString);
+        System.out.println(inString + " printed backwards is: " + outString); // return result to terminal.
 
-        input.close();
+        input.close(); // close input.
     }
-
-
 }
