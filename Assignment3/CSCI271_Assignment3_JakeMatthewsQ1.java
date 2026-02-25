@@ -42,27 +42,48 @@ import java.util.Scanner;
 public class CSCI271_Assignment3_JakeMatthewsQ1{
 
 
-    public static int length(String s, int currLength){
+    /*****************************length()****************************
+    * Description: This function finds the length of a string recursively. 
+    *
+    * Parameters: a list each parameter the function takes
+    *
+    * Pre: list the preconditions; i.e., the things that must be true
+    * before the function is called. Usually these involve whether
+    * and how parameters must be initialised before the call, etc.
+    *
+    * Post: List the postconditions; i.e., the things that are guaranteed
+    * to be true when the function finishes, assuming that the
+    * listed preconditions are satisfied.
+    *
+    * Returns: Describe what value the function returns, if any.
+    *
+    * Called by: list the name(s) of the function(s) that call this one.
+    * Calls: list the name(s) of the function(s) that this one calls.
+    ************************************************************************/
+    public static int length(String s){
         // Base Case; if s has no characters left, we've looked at all of them.
         if(s == ""){
-            return currLength;
+            return 0;
         } 
         // Recursive Case
+        // Call 1 + length() with the string missing its first character 
+        // (1 states we've searched one character so far, this increments as we recursively search)
         else{
-            return length(s.substring(1), currLength); 
+            return 1 + length(s.substring(1)); 
         }
     }
 
     public static void main(String[] args){
 
-        Scanner input = new Scanner(System.in);
+        Scanner input = new Scanner(System.in); // create input object
         
-        String testString = input.nextLine();
+        String testString = input.nextLine(); // initialize the string to find the length of
 
-        int length = length(testString, 0);
+        int length = length(testString); // call the function, assign its value to int length.
 
-        System.out.println("Length: " + length);
-        input.close();
+        System.out.println("Length: " + length); // return value to user.
+
+        input.close(); // close input
 
     }
 
