@@ -8,7 +8,7 @@ import java.util.Scanner;
 // must be recursive and should not print anything to the screen, the main program will! Solutions
 // to this question using a loop are not acceptable! In addition, calculate the running time of this
 // function and show your work in details
-public class evenNumSum{
+public class CSCI271_Assignment3_JakeMatthewsQ6{
 
     public static int evenSum(int[] A, int sum, int numCount, int i){
         if(i == numCount){

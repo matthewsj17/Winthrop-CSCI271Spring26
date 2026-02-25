@@ -1,10 +1,9 @@
-import java.util.Scanner;
-
 // Question 4
 // Write a JAVA program that reads in an integer N and a single digit D from the user and displays
 // the number of times D occurs in N. The program will use a recursive function that takes N and D
 // as arguments and returns the number of times D appears in N recursively!
-public class digitOccurance{
+import java.util.Scanner;
+public class CSCI271_Assignment3_JakeMatthewsQ4{
 
 
     public static int digitNum(long N, int D, int occurances){

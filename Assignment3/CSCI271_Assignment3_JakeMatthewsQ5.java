@@ -6,7 +6,7 @@ import java.util.Scanner;
 // program must use a recursive function that takes S as an argument and returns S’ as S but
 // backwards. Solutions to this question using a loop are not acceptable! In addition, calculate the
 // running time of this function and show your work in details
-public class stringReverse{
+public class CSCI271_Assignment3_JakeMatthewsQ5{
 
     public static String reverse(String inString, String outString, int i){
         if(inString == ""){

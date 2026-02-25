@@ -1,12 +1,11 @@
-import java.util.Scanner;
-
 // Question 2 [20 marks]
 // Write a JAVA program that reads a string S and a single character C from the user and displays
 // the number of times C occurs in S. This program will use a function that takes S and C as
 // arguments and returns the number of times C appears in S recursively! Solutions to this question
 // which use a loop are not acceptable! In addition, calculate the running time of this function and
 // show your work in details.
-public class characterFinder{
+import java.util.Scanner;
+public class CSCI271_Assignment3_JakeMatthewsQ2{
 
     public static int charNum(String s, char c, int charCount){
     //Basecase: if the string is empty, then we return the number of times c appears 
@@ -21,6 +20,14 @@ public class characterFinder{
         return charNum(s.substring(1), c, charCount);
     }
 }
+
+// Time Complexity Calculations
+//  T(n) = T(n-1) + O(1) 
+//  T(n-1) = return charNum(s.substring(1), c, charCount);
+//  O(1) =  if(s.charAt(0) == c) charCount += 1;
+//  For this reason, the function charNum() grows linearly, with a big O notation of O(n).
+
+
 
     public static void main(String[] args) {
         

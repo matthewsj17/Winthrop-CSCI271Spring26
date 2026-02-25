@@ -5,7 +5,7 @@ import java.util.Scanner;
 // so, the program will use a recursive function that takes S as an argument and returns the number
 // of characters in S recursively! Solutions to this question using a loop are not acceptable! In
 // addition, calculate the running time of this function and show your work in details.
-public class recursiveLength{
+public class CSCI271_Assignment3_JakeMatthewsQ1{
 
 
     public static int length(String s, int currLength){
