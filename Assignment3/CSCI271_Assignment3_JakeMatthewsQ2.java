@@ -72,12 +72,16 @@ public class CSCI271_Assignment3_JakeMatthewsQ2{
         return charNum(s.substring(1), c, charCount); // call charNum again, missing the first character of s.
     }
 }
-
-// Time Complexity Calculations
-//  T(n) = T(n-1) + O(1) 
-//  T(n-1) = return charNum(s.substring(1), c, charCount);
-//  O(1) =  if(s.charAt(0) == c) charCount += 1;
-//  For this reason, the function charNum() grows linearly, with a big O notation of O(n).
+    /*****Time Complexity Calculation*********
+     * T(n) = T(n-1) + O(1) 
+     * 
+     * T(n-1) = return charNum(s.substring(1), c, charCount);
+     * O(1) =  if(s.charAt(0) == c) charCount += 1;
+     * 
+     * For this reason, the function charNum() grows linearly, 
+     * with a big O notation of O(n).
+     * 
+     *****************************************/
 
 
 
