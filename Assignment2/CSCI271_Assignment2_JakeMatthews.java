@@ -60,7 +60,7 @@ public class CSCI271_Assignment2_JakeMatthews {
         System.out.println(frac0);
         System.out.println(frac2);
 
-        System.out.println("b) Numbers 7/1: 7 => 0/1");
+        System.out.println("b) Numbers 7/1 => 7");
         System.out.println(frac5);
 
         System.out.println("c) 0 Cases: 0, -Infinity, NaN, Infinity");
@@ -140,6 +140,17 @@ public class CSCI271_Assignment2_JakeMatthews {
                 System.out.println(TestingArray[i].pow(PowArray[j]));
             }
         }
+
+	// Testing Rubric Example
+
+	System.out.println("Testing Example From Rubric");
+	Fraction a = new Fraction(16); // create fraction
+	Fraction b = new Fraction(3,5).add(new Fraction(7)); // create fraction through addition
+	Fraction c = new Fraction(6,7); // create fraction
+	Fraction results = c.multiply(a.divide(b)); // create fraction through multiplication and division
+	System.out.println(results);  // should print "240/133"
+
+
 
 
     }
