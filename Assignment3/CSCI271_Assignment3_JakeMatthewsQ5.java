@@ -36,15 +36,35 @@
 import java.util.Scanner;
 public class CSCI271_Assignment3_JakeMatthewsQ5{
 
-    public static String reverse(String inString, String outString, int i){
-        if(inString == ""){
+    /*****************************reverse()****************************
+    * Description: The function recursively reverses a string and 
+    * returns it to the user.
+    *
+    * Parameters: String inString, String outString, int i
+    *
+    * Pre: inString must be allocated in main.
+    *
+    * Post: inString will be reversed, and outString will be returned to the user.
+    *
+    * Returns: The String outString will be returned. 
+    *
+    * Called by: reverse()
+    * Calls: reverse()
+    ************************************************************************/
+    public static String reverse(String inString, String outString){
+        // Base Case. If our inString contains nothing, 
+        // then we've incremented through the whole string and return the reversed string.
+        if(inString == ""){ 
             return outString;
         }
+        // Recursive Case
+        // We get the first character from the inString, remove it from inString, 
+        // and add it to the beginning of outString.
         else{
-            char c = inString.charAt(0);
-            inString = inString.substring(1);
-            outString = c + outString;
-            return reverse(inString, outString, i);
+            char c = inString.charAt(0); // isolate 1st char
+            inString = inString.substring(1); // remove 1st char from string.
+            outString = c + outString; // add to beginning of outString
+            return reverse(inString, outString); // recursively call the function.
 
         }
     }
@@ -55,7 +75,7 @@ public class CSCI271_Assignment3_JakeMatthewsQ5{
 
         String inString = input.nextLine(); 
 
-        String outString = reverse(inString, "", 0);
+        String outString = reverse(inString, "");
 
         System.out.println(inString + " printed backwards is: " + outString);
 
