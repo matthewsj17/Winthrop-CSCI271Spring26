@@ -36,40 +36,54 @@ import java.util.Scanner;
 public class CSCI271_Assignment3_JakeMatthewsQ4{
 
 
+    /*****************************digitNum()****************************
+    * Description: This function identifies how many of a given 
+    * digit are present in a long integer.
+    *
+    * Parameters: long N, int D, int occurances
+    *
+    * Pre: A long N must be created and supplied, 
+    * as well as an integer to be searched for (int D).
+    *
+    * Post: The number of times D occurs in N will be found 
+    * recursively, and assigned to int occurances.
+    *
+    * Returns: digitNum() returns the number of times D occurs in N (int occurances)
+    *
+    * Called by: digitNum()
+    * Calls: digitNum()
+    ************************************************************************/
     public static int digitNum(long N, int D, int occurances){
         
+        // Base Case
+        // If N = 0, then we have search through every digit in the number.
+        // We return how many times D has occured.
         if(N == 0){
             return occurances;
         }
+        // Recursive Case
         else{
-
-            long oneDigit = N % 10;
-            long newN = N / 10;
+            long oneDigit = N % 10; // Isolate the 'ones' place from N. 
+            long newN = N / 10; // remove the ones place from N.
+            // If the digit we isolated from N is the digit we are looking for, we increment occurances.
             if(oneDigit == D){
                 occurances += 1;
             }
-            return digitNum(newN, D, occurances);
+            return digitNum(newN, D, occurances); // recursively call digitNum() with out newN.
         }
-        
-
-
     }
 
     public static void main(String[] args){
 
-        Scanner input = new Scanner(System.in);
+        Scanner input = new Scanner(System.in); // create input object
 
-        long N = input.nextLong();
-        int D = input.nextInt();
-        int answer = digitNum(N, D, 0);
+        long N = input.nextLong(); // initialize our long N to be searched
+        int D = input.nextInt(); // initialize our digit to search for within N.
+        int answer = digitNum(N, D, 0); // initlaiize answer variable and 
+        // call our function (occurances set to 0 to begin)
 
-        System.out.println(D + " occurs in " + N + ": " + answer + " times.");
+        System.out.println(D + " occurs in " + N + ": " + answer + " times."); // return results to terminal.
 
-        input.close();
+        input.close(); // close input.
     }
-
-
-
-
-
 }
