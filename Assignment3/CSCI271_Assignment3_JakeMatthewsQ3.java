@@ -1,8 +1,23 @@
-// Question 3 [10 marks]
-// Write a JAVA program that reads a list of integers from the user and stores them into an array A,
-// then, the program will find the maximum integer in A using a recursive function max().
-// Solutions to this question using a loop are not acceptable!! In addition, calculate the running time
-// of this function. Show your work in details.
+/*************************************************************************
+* Project 3.3 for CSCI 271-001 Spring 2026
+*
+* Author: Jake Matthews
+* OS: Windows 11
+* Compiler: javac 21.0.9
+* Date: February 25th, 2026
+*
+* Purpose
+* This program reads a list of integers from the user and finds the 
+* maximum (largest integer) in the list entered. It does this recursively.
+*
+*************************************************************************/
+/* 
+Question 3 [10 marks]
+Write a JAVA program that reads a list of integers from the user and stores them into an array A,
+then, the program will find the maximum integer in A using a recursive function max().
+Solutions to this question using a loop are not acceptable!! In addition, calculate the running time
+of this function. Show your work in details.
+*/
 
 import java.util.Arrays;
 import java.util.Scanner;

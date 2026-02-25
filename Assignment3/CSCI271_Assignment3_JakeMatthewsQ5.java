@@ -1,4 +1,16 @@
-import java.util.Scanner;
+/*************************************************************************
+* Project 3.5 for CSCI 271-001 Spring 2026
+*
+* Author: Jake Matthews
+* OS: Windows 11
+* Compiler: javac 21.0.9
+* Date: February 25th, 2026
+*
+* Purpose
+* This program reads a string in from the user and uses recursion to 
+* display it in backwards ordfer back to the user.
+*
+*************************************************************************/
 
 
 // Question 5 [20 marks]
@@ -6,6 +18,7 @@ import java.util.Scanner;
 // program must use a recursive function that takes S as an argument and returns S’ as S but
 // backwards. Solutions to this question using a loop are not acceptable! In addition, calculate the
 // running time of this function and show your work in details
+import java.util.Scanner;
 public class CSCI271_Assignment3_JakeMatthewsQ5{
 
     public static String reverse(String inString, String outString, int i){

@@ -1,5 +1,16 @@
-import java.util.Arrays;
-import java.util.Scanner;
+/*************************************************************************
+* Project 3.6 for CSCI 271-001 Spring 2026
+*
+* Author: Jake Matthews
+* OS: Windows 11
+* Compiler: javac 21.0.9
+* Date: February 25th, 2026
+*
+* Purpose
+* This program reads a list from the user, and summs only the even numbers together.
+* This is done recursively using the evenSum() function, and the result is sent to the user.
+*
+*************************************************************************/
 
 // Question 6 [20 marks]
 // Write a JAVA program that reads a list of integers from the keyboard and stores them into an
@@ -8,6 +19,9 @@ import java.util.Scanner;
 // must be recursive and should not print anything to the screen, the main program will! Solutions
 // to this question using a loop are not acceptable! In addition, calculate the running time of this
 // function and show your work in details
+
+import java.util.Arrays;
+import java.util.Scanner;
 public class CSCI271_Assignment3_JakeMatthewsQ6{
 
     public static int evenSum(int[] A, int sum, int numCount, int i){
