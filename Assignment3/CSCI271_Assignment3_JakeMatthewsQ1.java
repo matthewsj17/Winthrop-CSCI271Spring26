@@ -45,20 +45,16 @@ public class CSCI271_Assignment3_JakeMatthewsQ1{
     /*****************************length()****************************
     * Description: This function finds the length of a string recursively. 
     *
-    * Parameters: a list each parameter the function takes
+    * Parameters: String s
     *
-    * Pre: list the preconditions; i.e., the things that must be true
-    * before the function is called. Usually these involve whether
-    * and how parameters must be initialised before the call, etc.
+    * Pre: String s must be created and supplied.
     *
-    * Post: List the postconditions; i.e., the things that are guaranteed
-    * to be true when the function finishes, assuming that the
-    * listed preconditions are satisfied.
+    * Post: The length of String s will be calculated.
     *
-    * Returns: Describe what value the function returns, if any.
+    * Returns: The length of String s: of type int.
     *
-    * Called by: list the name(s) of the function(s) that call this one.
-    * Calls: list the name(s) of the function(s) that this one calls.
+    * Called by: length()
+    * Calls: length()
     ************************************************************************/
     public static int length(String s){
         // Base Case; if s has no characters left, we've looked at all of them.
