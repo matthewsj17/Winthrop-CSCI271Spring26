@@ -57,19 +57,22 @@ public class CSCI271_Assignment3_JakeMatthewsQ2{
     * Called by: charNum()
     * Calls: charNum()
     ************************************************************************/
-    public static int charNum(String s, char c, int charCount){
-    //Basecase: if the string is empty, then we return the number of times c appears 
+    public static int charNum(String s, char c){
+    //Basecase: if the string is empty, then we return the number of times c appears (pop back up) 
     if(s == ""){
-        return charCount;
+        return 0;
     }
     // Recursive Case 
     else{
         // if the first character of the string is the character we are looking for, increment charCount.
         if(s.charAt(0) == c){ 
-            charCount += 1;
+            return 1 + charNum(s.substring(1), c); // call charNum again, missing the first character of s.
+        }
+        else{
+            return charNum(s.substring(1), c); // call charNum again, missing the first character of s.
         }
         
-        return charNum(s.substring(1), c, charCount); // call charNum again, missing the first character of s.
+        
     }
 }
     /*****Time Complexity Calculation*********
@@ -87,17 +90,28 @@ public class CSCI271_Assignment3_JakeMatthewsQ2{
 
     public static void main(String[] args) {
         
-        Scanner input = new Scanner(System.in); // create input object
-        
-        System.out.print("Enter the string to search: ");
-        String testString = input.nextLine(); // initialize string to search
-        System.out.print("Enter the character to search for: ");
-        char testChar = input.next().charAt(0); // initialize char to search for
+        // Input Code Commented Out, as explained in CSCI271_Assignment3_JakeMatthewsQ1.java
+        // Scanner input = new Scanner(System.in); // create input object
+        // System.out.print("Enter the string to search: ");
+        // String testString = input.nextLine(); // initialize string to search
+        // System.out.print("Enter the character to search for: ");
+        // char testChar = input.next().charAt(0); // initialize char to search for
+        // int length = charNum(testString, testChar, 0); // initialize length, and assign it the value of the function call
+        // System.out.println(testChar + " appears in " + testString + " " + length + " times."); // return value to user.
+        // input.close(); // close input
 
-        int length = charNum(testString, testChar, 0); // initialize length, and assign it the value of the function call
+        // Test Case 1 (this tests if nothing is entered).
+        int test1 = charNum("", 'c');
+        System.out.println("'c' occurs in '' " + test1 + " times.");
 
-        System.out.println(testChar + " appears in " + testString + " " + length + " times."); // return value to user.
-        input.close(); // close input
+        // Test Case 2 (tests a normal case)
+        int test2 = charNum("chocolate", 'c');
+        System.out.println("'c' occurs in 'chocolate' " + test2 + " times.");
+
+        // Test Case 3 (tests whitespace)
+        int test3 = charNum("Hey there, how are you?", ' ');
+        System.out.println("There are " + test3 + " whitespaces in 'Hey there, how are you?'");
+
 
     }
 
