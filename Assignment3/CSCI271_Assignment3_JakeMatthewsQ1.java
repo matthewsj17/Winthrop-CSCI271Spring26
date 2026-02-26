@@ -74,24 +74,43 @@ public class CSCI271_Assignment3_JakeMatthewsQ1{
     }
 
     /*****Time Complexity Calculation*********
-     * T(n) = O(1) + T(n-1) [n = string's length]
+     * T(n) = O(1) + T(n-1) * O(n) [n = string length]
      * 
-     * The time complexity for this is linear [O(n)], 
-     * as the time grows linearly with the string's length.
+     * T(n-1) = length(*NEW STRING*)
+     * O(n)   = s.substring(1)
+     * O(1)   = 1 + (Above Information)
+     * 
+     * 
+     * The time complexity for this is O(n^2), as the time grows quadratically 
+     * with the string's length. This is because to remove a character from the string
+     * using java's substring() function is of linear time, and we must increment through every letter.
      * 
      *****************************************/
     public static void main(String[] args){
 
-        Scanner input = new Scanner(System.in); // create input object
-        
+        //  The below code is commented out, but is used to read information in and test that information.
+        // I commented this code out due to the Test Cases section of the Evalutation portion on the rubric.
+        // "Test cases in the main program will be graded with another 10% — please document these
+        // clearly. For each test case, please explain the condition it tests and how it does so briefly"
+
+        /*Scanner input = new Scanner(System.in); // create input object
         String testString = input.nextLine(); // initialize the string to find the length of
-
         int length = length(testString); // call the function, assign its value to int length.
-
         System.out.println("Length: " + length); // return value to user.
-
         input.close(); // close input
+        */
 
+        // Test Case 1 (this tests if nothing is entered).
+        int length1 = length("");
+        System.out.println("The length of '' is: " + length1);
+
+        // Test Case 2 (tests a normal word)
+        int length2 = length("Assignment");
+        System.out.println("The length of 'Assignment' is: " + length2);
+
+        // Test Case 3 (tests whitespace)
+        int length3 = length("Hello World!");
+        System.out.println("The length of 'Hello World!' is: " + length3);
     }
 
     
