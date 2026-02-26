@@ -51,11 +51,11 @@ public class CSCI271_Assignment3_JakeMatthewsQ5{
     * Called by: reverse()
     * Calls: reverse()
     ************************************************************************/
-    public static String reverse(String inString, String outString){
+    public static String reverse(String inString){
         // Base Case. If our inString contains nothing, 
         // then we've incremented through the whole string and return the reversed string.
         if(inString == ""){ 
-            return outString;
+            return "";
         }
         // Recursive Case
         // We get the first character from the inString, remove it from inString, 
@@ -63,8 +63,7 @@ public class CSCI271_Assignment3_JakeMatthewsQ5{
         else{
             char c = inString.charAt(0); // isolate 1st char
             inString = inString.substring(1); // remove 1st char from string.
-            outString = c + outString; // add to beginning of outString
-            return reverse(inString, outString); // recursively call the function.
+            return reverse(inString) + c; // recursively call the function including the first c at the front.
 
         }
     }
@@ -78,15 +77,23 @@ public class CSCI271_Assignment3_JakeMatthewsQ5{
 
     public static void main(String[] args){
 
-        Scanner input = new Scanner(System.in); // create input object
+        // Scanner input = new Scanner(System.in); // create input object
+        // System.out.print("Enter the string to be reversed: ");
+        // String inString = input.nextLine();  // allocate space for the string and initialize it.
+        // String outString = reverse(inString); // allocate space for outString, and call the reverse function.
+        // System.out.println(inString + " printed backwards is: " + outString); // return result to terminal.
+        // input.close(); // close input.
 
-        System.out.print("Enter the string to be reversed: ");
-        String inString = input.nextLine();  // allocate space for the string and initialize it.
+        // Test Case 1 (this tests if nothing is entered).
+        String test1 = reverse("");
+        System.out.println("'' backwards is: " + test1 );
 
-        String outString = reverse(inString, ""); // allocate space for outString, and call the reverse function.
+        // Test Case 2 (this tests a normal case).
+        String test2 = reverse("Labrador");
+        System.out.println("'Labrador' backwards is: " + test2);
 
-        System.out.println(inString + " printed backwards is: " + outString); // return result to terminal.
-
-        input.close(); // close input.
+        // Test Case 3 (this tests whitespace case).
+        String test3 = reverse("Jake Matthews");
+        System.out.println("'Jake Matthews' backwards is: " + test3);
     }
 }

@@ -44,14 +44,13 @@ public class CSCI271_Assignment3_JakeMatthewsQ2{
     * Description: This functions finds the number of times a character
     * occurs in a string. (CASE SENSITIVE)
     *
-    * Parameters: String s, char c, int charCount
+    * Parameters: String s, char c,
     *
     * Pre: A specific string and character must be supplied to the function 
-    * (charCount is always 0 at start)
     *
     * Post: The value of c's occurances in s is found.
     *
-    * Returns: The function returns charCount, an int with the number of c's
+    * Returns: The function returns the number of c's
     * occurances in s. 
     *
     * Called by: charNum()
@@ -64,7 +63,7 @@ public class CSCI271_Assignment3_JakeMatthewsQ2{
     }
     // Recursive Case 
     else{
-        // if the first character of the string is the character we are looking for, increment charCount.
+        // if the first character of the string is the character we are looking for, increment 
         if(s.charAt(0) == c){ 
             return 1 + charNum(s.substring(1), c); // call charNum again, missing the first character of s.
         }
@@ -79,7 +78,7 @@ public class CSCI271_Assignment3_JakeMatthewsQ2{
      * T(n) = T(n-1) + O(1) 
      * 
      * T(n-1) = return charNum(s.substring(1), c, charCount);
-     * O(1) =  if(s.charAt(0) == c) charCount += 1;
+     * O(1) =  if(s.charAt(0) == c) 1 + return charNum(s.substring(1), c, charCount);;
      * 
      * For this reason, the function charNum() grows linearly, 
      * with a big O notation of O(n).
