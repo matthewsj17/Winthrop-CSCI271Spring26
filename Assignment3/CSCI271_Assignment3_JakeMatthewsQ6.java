@@ -56,23 +56,29 @@ public class CSCI271_Assignment3_JakeMatthewsQ6{
     * Calls: evenSum()
     ************************************************************************/
 
-    public static int evenSum(int[] A, int sum, int numCount, int i){
+    public static int evenSum(int[] A, int numCount, int i){
         // Base Case
         // if our incrementation value = the length of the array, we've sorted through the whole list.
         if(i == numCount){ 
-            return sum;
+            return 0;
         }
         // Recursive Case
         else{
-            // If the number is is even, then we add it to the total sum. If it is odd, we do nothing.
-            if((A[0] % 2) == 0){ 
-                sum += A[0];
-            }
             // We create a new array that doesn't include the number we just tested previously.
             int newA[] = Arrays.copyOfRange(A, 1, A.length);
 
-            // We recurively call the function with the new array and i+1 to keep track of progress.
-            return evenSum(newA, sum, numCount, i+1);
+            // If the number is is even, then we increment. If it is odd, we do nothing.
+            if((A[0] % 2) == 0){ 
+                return A[0] + evenSum(newA, numCount, i+1);
+            }
+            else{
+                // We recurively call the function with the new array and i+1 to keep track of progress.
+                return evenSum(newA, numCount, i+1);
+            }
+            
+            
+
+            
         }
     }
     /*****Time Complexity Calculation*********
@@ -85,25 +91,36 @@ public class CSCI271_Assignment3_JakeMatthewsQ6{
 
     public static void main(String[] args){
 
-        Scanner input = new Scanner(System.in); // create input device
+        // Scanner input = new Scanner(System.in); // create input device
+        // System.out.println("Enter how many numbers will be used in the evenSum() function: ");
+        // int numTotal = input.nextInt(); // allocate a number for the total amount in the array.
+        // int numList[] = new int[numTotal]; // allocate space for the array in the heap.
+        // // For every number in the array, prompt the user to enter a number.
+        // for(int i = 0; i < numTotal; i++){
+        //     System.out.print("Enter your next number: ");
+        //     numList[i] = input.nextInt(); // assign this number to the next avaliable array space.
+        // }
+        // // initialize evenSum value and call recursive function with necessary information
+        // // (sum and i both as zero to begin.)
+        // int evenSum = evenSum(numList, numList.length, 0); 
+        // System.out.println("The evenSum of the list is: " + evenSum); // output result to user.
+        // input.close(); // close input.
 
-        System.out.println("Enter how many numbers will be used in the evenSum() function: ");
-        int numTotal = input.nextInt(); // allocate a number for the total amount in the array.
-        int numList[] = new int[numTotal]; // allocate space for the array in the heap.
 
-        // For every number in the array, prompt the user to enter a number.
-        for(int i = 0; i < numTotal; i++){
-            System.out.print("Enter your next number: ");
-            numList[i] = input.nextInt(); // assign this number to the next avaliable array space.
-        }
+        // Test Case 1 (this tests if nothing is entered).
+        int[] a1 = {};
+        int test1 = evenSum(a1, 0, 0);
+        System.out.println("The even sum of [] is: " + test1);
 
-        // initialize evenSum value and call recursive function with necessary information
-        // (sum and i both as zero to begin.)
-        int evenSum = evenSum(numList, 0, numList.length, 0); 
-        System.out.println("The evenSum of the list is: " + evenSum); // output result to user.
+        // Test Case 2 (this tests a normal case).
+        int[] a2 = {1, 2, 3, 4, 5};
+        int test2 = evenSum(a2, 5, 0);
+        System.out.println("The even sum of [1, 2, 3, 4, 5] is: " + test2);
 
-        input.close(); // close input.
-
+        // Test Case 3 (tests all odd numbers)
+        int[] a3 = {1, 3, 5, 7 ,9};
+        int test3 = evenSum(a3, 5, 0);
+        System.out.println("The even sum of [1, 3, 5, 7, 9] is: " + test3);
 
     }
 
