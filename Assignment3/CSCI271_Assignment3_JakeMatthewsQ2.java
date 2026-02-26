@@ -77,9 +77,9 @@ public class CSCI271_Assignment3_JakeMatthewsQ2{
     /*****Time Complexity Calculation*********
      * T(n) = T(n-1) + O(1) 
      * 
-     * T(n-1) = return charNum(s.substring(1), c, charCount);
-     * O(1) =  if(s.charAt(0) == c) 1 + return charNum(s.substring(1), c, charCount);;
-     * 
+     * T(n-1) = return charNum(s.substring(1), c);
+     * O(1) =  if(s.charAt(0) == c) 1 + return charNum(s.substring(1), c);
+     *  
      * For this reason, the function charNum() grows linearly, 
      * with a big O notation of O(n).
      * 
@@ -95,7 +95,7 @@ public class CSCI271_Assignment3_JakeMatthewsQ2{
         // String testString = input.nextLine(); // initialize string to search
         // System.out.print("Enter the character to search for: ");
         // char testChar = input.next().charAt(0); // initialize char to search for
-        // int length = charNum(testString, testChar, 0); // initialize length, and assign it the value of the function call
+        // int length = charNum(testString, testChar; // initialize length, and assign it the value of the function call
         // System.out.println(testChar + " appears in " + testString + " " + length + " times."); // return value to user.
         // input.close(); // close input
 
