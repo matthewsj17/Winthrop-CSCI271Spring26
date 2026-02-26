@@ -46,9 +46,9 @@ public class CSCI271_Assignment3_JakeMatthewsQ4{
     * as well as an integer to be searched for (int D).
     *
     * Post: The number of times D occurs in N will be found 
-    * recursively, and assigned to int occurances.
+    * recursively.
     *
-    * Returns: digitNum() returns the number of times D occurs in N (int occurances)
+    * Returns: digitNum() returns the number of times D occurs in N (type int)
     *
     * Called by: digitNum()
     * Calls: digitNum()
@@ -76,7 +76,7 @@ public class CSCI271_Assignment3_JakeMatthewsQ4{
     }
     /*****Time Complexity Calculation*********
      * T(n) = O(1) + O(1) + O(1) + T(n-1) [n = array length] 
-     * O(1)'s = oneDigit & newN initialization, and occurances incrementation
+     * O(1)'s = oneDigit & newN initialization, and incrementation
      * 
      * The time complexity for this is linear [O(n)], 
      * as the time grows linearly with the array's length.
@@ -93,7 +93,7 @@ public class CSCI271_Assignment3_JakeMatthewsQ4{
         // System.out.println(D + " occurs in " + N + ": " + answer + " times."); // return results to terminal.
         // input.close(); // close input.
 
-        // Test Case 1 (this tests if nothing is entered).
+        // Test Case 1 (this tests if nothing is entered). [Some logic error perhaps? Unsure how to fix without breaking.]
         int test1 = digitNum(0, 0);
         System.out.println("0 occurs in 0 " + test1 + " times.");
 
