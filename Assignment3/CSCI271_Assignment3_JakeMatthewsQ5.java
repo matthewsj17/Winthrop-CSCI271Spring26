@@ -44,9 +44,9 @@ public class CSCI271_Assignment3_JakeMatthewsQ5{
     *
     * Pre: inString must be allocated in main.
     *
-    * Post: inString will be reversed, and outString will be returned to the user.
+    * Post: inString will be reversed and returned to the user.
     *
-    * Returns: The String outString will be returned. 
+    * Returns: The reversed string will be returned. 
     *
     * Called by: reverse()
     * Calls: reverse()
@@ -59,7 +59,7 @@ public class CSCI271_Assignment3_JakeMatthewsQ5{
         }
         // Recursive Case
         // We get the first character from the inString, remove it from inString, 
-        // and add it to the beginning of outString.
+        // and add it to the end of the reversed string.
         else{
             char c = inString.charAt(0); // isolate 1st char
             inString = inString.substring(1); // remove 1st char from string.
