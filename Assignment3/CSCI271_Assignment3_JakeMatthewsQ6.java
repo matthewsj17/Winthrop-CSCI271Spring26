@@ -42,7 +42,7 @@ public class CSCI271_Assignment3_JakeMatthewsQ6{
     /*****************************<evenSum()>****************************
     * Description: a brief description of what the function does.
     *
-    * Parameters: int[] A, int sum, int numCount, int i
+    * Parameters: int[] A, int numCount, int i
     *
     * Pre: All parameters must be initialized before the function call. 
     *      int[] A especially, as it is used to find int numCount.
