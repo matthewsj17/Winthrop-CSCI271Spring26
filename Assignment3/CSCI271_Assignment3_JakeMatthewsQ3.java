@@ -59,8 +59,8 @@ public class CSCI271_Assignment3_JakeMatthewsQ3{
     public static int max(int[] A, int numCount, int i){
         // assume the first number in the array is the max.
         int max = A[0];
-        //Basecase; if i  hits numCount (number of spots in the array), then we output whatever max is.
-        if(i == numCount){
+        //Basecase; if i  hits numCount-1 (number of spots in the array), then we output whatever max is.
+        if(i >= numCount-1){
             return max;
         }
         // Recursive Case
@@ -85,24 +85,38 @@ public class CSCI271_Assignment3_JakeMatthewsQ3{
 
     public static void main(String[] args){
 
-        Scanner input = new Scanner(System.in); // create input object
+        // Scanner input = new Scanner(System.in); // create input object
+        // int numTotal = input.nextInt(); //// allocate a number for the total amount in the array.
+        // int numList[] = new int[numTotal]; // allocate space for the array in the heap.
+        // // For every number in the array, prompt the user to enter a number.
+        // for(int i = 0; i < numTotal; i++){
+        //     System.out.print("Enter your next number: ");
+        //     numList[i] = input.nextInt(); // assign this number to the next avaliable array space.
+        // }
+        // // Use max() to find the max.
+        // int maxValue = max(numList, (numList.length-1), 0); // initialize maxValue and assign it to the recursive functions result.
+        // System.out.println("The maximum value in the list is: " + maxValue); // return value to user.
+        // input.close(); // close input
 
-        int numTotal = input.nextInt(); //// allocate a number for the total amount in the array.
-        int numList[] = new int[numTotal]; // allocate space for the array in the heap.
+        // Test Case 1 (this tests if nothing is entered). [THIS RETURNS AN OUTOFBOUNDS EXCEPTION]
+        // int[] a1 = {};
+        // int test1 = max(a1, 0, 0);
+        // System.out.println("The max of [] is: " + test1);
 
-        // For every number in the array, prompt the user to enter a number.
-        for(int i = 0; i < numTotal; i++){
-            System.out.print("Enter your next number: ");
-            numList[i] = input.nextInt(); // assign this number to the next avaliable array space.
-        }
+        // Test Case 2 (this tests a sorted case).
+        int[] a2 = {1, 2, 3, 4, 5};
+        int test2 = max(a2, 5, 0);
+        System.out.println("The max of [1, 2, 3, 4, 5] is: " + test2);
 
-        // Use max() to find the max.
-        int maxValue = max(numList, (numList.length-1), 0); // initialize maxValue and assign it to the recursive functions result.
-        
-        System.out.println("The maximum value in the list is: " + maxValue); // return value to user.
+        // Test Case 3 (this tests an unsorted case)
+        int[] a3 = {15, 10, 5, 2, 0};
+        int test3 = max(a3, 5, 0);
+        System.out.println("The max of [15, 10, 5, 2, 0] is: " + test3);
 
-        input.close(); // close input
-
+        // Test Case 4 (negative numbers)
+        int[] a4 = {-11, -1, 0, 1 ,11};
+        int test4 = max(a4, 5, 0);
+        System.out.println("The max of [-11, -1, 0, 1, 11] is: " + test4);
 
     }
 
