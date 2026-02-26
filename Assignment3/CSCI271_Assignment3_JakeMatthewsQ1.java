@@ -78,8 +78,9 @@ public class CSCI271_Assignment3_JakeMatthewsQ1{
      * 
      * 
      * The time complexity for this is O(n^2), as the time grows quadratically 
-     * with the string's length. This is because to remove a character from the string
-     * using java's substring() function is of linear time, and we must increment through every letter.
+     * with the string's length. This is because to remove a character from the string we use
+     * java's substring() function which is of linear time. We must do this for every character of the string.
+     * N * N = N^2
      * 
      *****************************************/
     public static void main(String[] args){

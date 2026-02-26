@@ -82,10 +82,15 @@ public class CSCI271_Assignment3_JakeMatthewsQ6{
         }
     }
     /*****Time Complexity Calculation*********
-     * T(n) = O(1) + O(1) + T(n-1)
+     * T(n) = O(n) * T(n-1) + O(1)
      * 
-     * The time complexity for this is linear [O(n)], 
-     * as the time grows linearly with the array's length
+     * O(n)   = int newA[] = Arrays.copyofRange(A, 1, A.length)
+     * T(n-1) = evenSum(newA, numCount, i+1)
+     * O(1)   = A[0] + T(n-1)
+     * 
+     * The time complexity for this is quadratic [O(n^2)], 
+     * as the time grows quadratically with the array's length
+     * (Arrays.copyofRange() has its own O(n) time complexity.)
      * 
      *****************************************/
 

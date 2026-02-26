@@ -76,10 +76,14 @@ public class CSCI271_Assignment3_JakeMatthewsQ3{
     }
 
     /*****Time Complexity Calculation*********
-     * T(n) = O(n)
+     * T(n) = T(n-1) * O(n)
      * 
-     * The time complexity for this is linear [O(n)],
-     * as the time grows linearly with the array's length
+     * O(n)   = int newA[] = Arrays.copyOfRange(A, 1, A.length);
+     * T(n-1) = int alternativeMax = max(newA, numCount, i+1);
+     * 
+     * The time complexity for this is quadratic [O(n^2)],
+     * as the time grows quadratically with the array's length.
+     * The array.copyofRange function has its own linear time.
      * 
      *****************************************/
 

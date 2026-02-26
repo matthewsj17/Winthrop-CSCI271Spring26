@@ -68,10 +68,16 @@ public class CSCI271_Assignment3_JakeMatthewsQ5{
         }
     }
     /*****Time Complexity Calculation*********
-     * T(n) = O(1) + O(1) + O(1) + T(n-1)
+     * T(n) = O(1)a * O(n) + T(n-1) + O(1)b
      * 
-     * The time complexity for this is linear [O(n)], 
-     * as the time grows linearly with the inString's length
+     * O(1)a  = initialization of char c.
+     * O(n)   = inString.substring(1)
+     * T(n-1) = reverse(inString)
+     * O(1)b  = + c
+     * 
+     * The time complexity for this is quadratic [O(n^2)], 
+     * as the time grows quadratically with the inString's length
+     * (String .substring function has its own O(n) linear increase in time complexity)
      * 
      *****************************************/
 

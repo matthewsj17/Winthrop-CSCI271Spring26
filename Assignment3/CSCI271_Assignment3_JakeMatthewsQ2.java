@@ -75,13 +75,14 @@ public class CSCI271_Assignment3_JakeMatthewsQ2{
     }
 }
     /*****Time Complexity Calculation*********
-     * T(n) = T(n-1) + O(1) 
+     * T(n) = T(n-1) + O(1) * O(n)
      * 
-     * T(n-1) = return charNum(s.substring(1), c);
+     * O(n) = 's.substring(1)'
+     * T(n-1) = return charNum('s', c);
      * O(1) =  if(s.charAt(0) == c) 1 + return charNum(s.substring(1), c);
      *  
-     * For this reason, the function charNum() grows linearly, 
-     * with a big O notation of O(n).
+     * For this reason, the function charNum() grows quadratically, 
+     * with a big O notation of O(n^2).
      * 
      *****************************************/
 

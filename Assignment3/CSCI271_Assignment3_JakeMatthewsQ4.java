@@ -75,8 +75,10 @@ public class CSCI271_Assignment3_JakeMatthewsQ4{
         }
     }
     /*****Time Complexity Calculation*********
-     * T(n) = O(1) + O(1) + O(1) + T(n-1) [n = array length] 
-     * O(1)'s = oneDigit & newN initialization, and incrementation
+     * T(n) = O(1)a + O(1)b + O(1)c + T(n-1) [n = array length] 
+     * O(1)a = oneDigit initialization
+     * O(1)b = newN initialization
+     * O(1)c = incrementation
      * 
      * The time complexity for this is linear [O(n)], 
      * as the time grows linearly with the array's length.
