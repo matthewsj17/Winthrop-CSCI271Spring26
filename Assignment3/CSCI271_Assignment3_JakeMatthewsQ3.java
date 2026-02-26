@@ -78,7 +78,7 @@ public class CSCI271_Assignment3_JakeMatthewsQ3{
     /*****Time Complexity Calculation*********
      * T(n) = O(n)
      * 
-     * The time complexity for this is linear [O(n)], 
+     * The time complexity for this is linear [O(n)],
      * as the time grows linearly with the array's length
      * 
      *****************************************/
