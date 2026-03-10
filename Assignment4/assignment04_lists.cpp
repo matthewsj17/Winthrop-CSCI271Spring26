@@ -1,10 +1,10 @@
 /*************************************************************************
 * Programming Assignment 4 for CSCI 271-001 Spring 2026
 *
-* Author: William Klement (REPLACE THIS WITH YOUR OWN NAME)
-* OS: Ubuntu Debian Linux 21.1
+* Author: Jake Matthews (REPLACE THIS WITH YOUR OWN NAME)
+* OS: Windows 11
 * Compiler: g++
-* Date: March 9, 2026
+* Date: March 23, 2026
 *
 * Purpose
 * This program implements the class Lists as linked lists of generic nodes 
