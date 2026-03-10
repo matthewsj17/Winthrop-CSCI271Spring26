@@ -43,6 +43,11 @@ template <typename T> class Node{
         // replace the following line with your code!!!!!
 *********************************************************************************/
       cout<<"    ~Node(): you need to write this method <-------------"<<endl;
+      // delete [SOMETHING]; // delete memory of node.
+      if(this->next != NULL){
+        this->next->~Node(); // calls the destructor of the next node.
+      }
+      
 
       // DO NOT REMOVE THE NEXT LINE: keep at end of your destructor method!!
       DN += 1;  // keep track of deallocations
@@ -65,8 +70,8 @@ template <typename T> class List{
 /********************************************************************************
         // replace the following line with your code!!!!!
 *********************************************************************************/
-        cout<<"    ~List(): you need to write this method <-------------"<<endl;
-
+        // cout<<"    ~List(): you need to write this method <-------------"<<endl;
+        head.~Node();
         DN += 1;  // keep track of deallocations
       }
 
@@ -141,7 +146,7 @@ template <typename T> class List{
         int len = 0;
  
         // start at the head of the list
-        Node<int>* temp = this->head;
+        Node<T>* temp = this->head; // Node<int> was originally here, changed to <T> as requested.
 
         // count the nodes all the way to NULL
         while(temp != NULL){
@@ -183,9 +188,17 @@ template <typename T> class List{
         // replace the following line with your code!!!!!
 *********************************************************************************/
         cout<<"    removeLast(): you need to write this method <-------------"<<endl;
-
+        // check the empty list
+        if(this->isEmpty()){
+          cout<<"The list is empty !"<<endl;
+        }
+        else{
+          // Write the removal code here!
+        
           // cout<<"last item removed"<<endl; // your method MUST use this!
+        }
       }
+
 
       // removeAt(index) deletes the element and its node found at 
       // position index in the list
