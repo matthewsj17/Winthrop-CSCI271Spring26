@@ -45,9 +45,9 @@ template <typename T> class Node{
       cout<<"    ~Node(): you need to write this method <-------------"<<endl;
       // delete [SOMETHING]; // delete memory of node.
       if(this->next != NULL){
-        this->next->~Node(); // calls the destructor of the next node.
-      }
-      
+        // next->~Node(); // calls the destructor of the next node.
+        delete this; // delete calls the destructor AND THEN deletes the memory.
+      } 
 
       // DO NOT REMOVE THE NEXT LINE: keep at end of your destructor method!!
       DN += 1;  // keep track of deallocations
@@ -71,7 +71,8 @@ template <typename T> class List{
         // replace the following line with your code!!!!!
 *********************************************************************************/
         // cout<<"    ~List(): you need to write this method <-------------"<<endl;
-        head.~Node();
+        head->~Node();
+        delete head;
         DN += 1;  // keep track of deallocations
       }
 
@@ -89,7 +90,22 @@ template <typename T> class List{
 *********************************************************************************/
         cout<<"    addLast(item): you need to write this method <-------------"<<endl;
 
-        // cout<<"new node added at back!"<<endl; // your method MUST use this!
+        // create a new node and fill it with the item given.
+        Node<T>* pNodeToInsert = new Node<T>;
+        pNodeToInsert->element = item;
+
+        Node<T>* curr = this->head; // create a current pointer to traverse the list
+
+        // Increment to find the last node in the list
+        while(curr->next != NULL){
+          curr = curr->next;
+        }
+
+        // replace the last node with the pointer to the node to insert. 
+        pNodeToInsert = curr->next;
+        curr->next = pNodeToInsert;
+        
+        cout<<"new node added at back!"<<endl; // your method MUST use this!
       }
 
       // addFront(item) creates and adds a new element node 
