@@ -44,10 +44,14 @@ template <typename T> class Node{
 *********************************************************************************/
       cout<<"    ~Node(): you need to write this method <-------------"<<endl;
       // delete [SOMETHING]; // delete memory of node.
-      if(this->next != NULL){
-        // next->~Node(); // calls the destructor of the next node.
-        delete this; // delete calls the destructor AND THEN deletes the memory.
-      } 
+      
+      // if(this->next != NULL){
+      //   // next->~Node(); // calls the destructor of the next node.
+      delete this->next;
+      //   // delete this; // delete calls the destructor AND THEN deletes the memory.
+      // }
+      
+      
 
       // DO NOT REMOVE THE NEXT LINE: keep at end of your destructor method!!
       DN += 1;  // keep track of deallocations
@@ -70,9 +74,9 @@ template <typename T> class List{
 /********************************************************************************
         // replace the following line with your code!!!!!
 *********************************************************************************/
-        // cout<<"    ~List(): you need to write this method <-------------"<<endl;
+        cout<<"    ~List(): you need to write this method <-------------"<<endl;
         head->~Node();
-        delete head;
+        // delete head;
         DN += 1;  // keep track of deallocations
       }
 
@@ -88,7 +92,7 @@ template <typename T> class List{
 /********************************************************************************
         // replace the following line with your code!!!!!
 *********************************************************************************/
-        cout<<"    addLast(item): you need to write this method <-------------"<<endl;
+        // cout<<"    addLast(item): you need to write this method <-------------"<<endl;
 
         // create a new node and fill it with the item given.
         Node<T>* pNodeToInsert = new Node<T>;
@@ -96,14 +100,25 @@ template <typename T> class List{
 
         Node<T>* curr = this->head; // create a current pointer to traverse the list
 
-        // Increment to find the last node in the list
-        while(curr->next != NULL){
-          curr = curr->next;
+        
+
+        if(this->size() == 0){ // if the list is empty we insert at front!
+          this->head = pNodeToInsert;
+          pNodeToInsert->next = curr;
+        }
+        else{ // otherwise we insert behind the last object
+          // Increment to find the last node in the list
+          while(curr->next != NULL){
+            curr = curr->next;
+          }
+          pNodeToInsert->next = curr->next;
+          curr->next = pNodeToInsert;
+
         }
 
         // replace the last node with the pointer to the node to insert. 
+        curr = pNodeToInsert;
         pNodeToInsert = curr->next;
-        curr->next = pNodeToInsert;
         
         cout<<"new node added at back!"<<endl; // your method MUST use this!
       }
@@ -115,9 +130,22 @@ template <typename T> class List{
 /********************************************************************************
         // replace the following line with your code!!!!!
 *********************************************************************************/
-        cout<<"    addFront(item): you need to write this method <-------------"<<endl;
+        // cout<<"    addFront(item): you need to write this method <-------------"<<endl;
 
-        // cout<<"new node added at front !"<<endl; // your method MUST use this!
+        Node<T>* pNodeToInsert = new Node<T>;
+        pNodeToInsert->element = item;
+
+        Node<T>* curr = this->head; // create a current pointer to traverse the list
+
+        
+        this->head = pNodeToInsert;
+        pNodeToInsert->next = curr;
+    
+        // replace the last node with the pointer to the node to insert. 
+        curr = pNodeToInsert;
+        pNodeToInsert = curr->next;
+
+        cout<<"new node added at front !"<<endl; // your method MUST use this!
       }
 
       // addAt(index, item) creates and adds a new element node containing 
@@ -210,10 +238,22 @@ template <typename T> class List{
         }
         else{
           // Write the removal code here!
-        
-          // cout<<"last item removed"<<endl; // your method MUST use this!
+
+          Node<T>* curr = this->head; // create a current pointer to traverse the list
+          Node<T>* pNode = this->head; // same here. 
+          // Increment to find the last node in the list
+          while(curr->next != NULL){
+            pNode = curr;
+            curr = curr->next;
+          }
+          
+          pNode->next = NULL;
+          delete curr;
         }
-      }
+        
+          cout<<"last item removed"<<endl; // your method MUST use this!
+        }
+      
 
 
       // removeAt(index) deletes the element and its node found at 
@@ -255,9 +295,25 @@ template <typename T> class List{
 /********************************************************************************
         // replace the following line with your code!!!!!
 *********************************************************************************/
-        cout<<"    removeFront(): you need to write this method <-------------"<<endl;
+        // cout<<"    removeFront(): you need to write this method <-------------"<<endl;
 
-          // cout<<"front item removed"<<endl; // your method MUST use this!
+        // check the empty list
+        if(this->isEmpty()){
+          cout<<"The list is empty !"<<endl;
+        }
+        else{
+        // Write the removal code here!
+          Node<T>* curr = this->head; // create a current pointer to traverse the list
+          Node<T>* pNode = this->head; // 
+        
+          curr = curr->next; // find the second node (not deleting this one)
+          
+          this->head = curr;
+          pNode->next = NULL;
+          delete pNode;
+        }
+
+          cout<<"front item removed"<<endl; // your method MUST use this!
 
       }
 
@@ -268,7 +324,21 @@ template <typename T> class List{
 /********************************************************************************
         // replace the following line with your code!!!!!
 *********************************************************************************/
-        cout<<"    getAt(): you need to write this method <-------------"<<endl;
+        // cout<<"    getAt(): you need to write this method <-------------"<<endl;
+
+        // Node<T>* pNode = this->head;
+        Node<T>* curr = this->head;
+        int temp = 0;
+
+        while(curr != NULL){
+        
+          if(index == temp){
+            res = curr->element;
+            break;
+          }
+          temp += 1;
+          curr = curr->next;
+        }
 
         return res;  // return the results -- YOU MUST USE THIS!!!!
       }
