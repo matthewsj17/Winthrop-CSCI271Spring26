@@ -24,15 +24,15 @@ int DN = 0;
 // A Generic Node Class
 template <typename T> class Node{
   private:
-    T element;
-    Node <T>* next;
+    T element; // initialze element field of Node
+    Node <T>* next; // initalize pointer to the next node.
 
     // Allow the friend class List to access private members
     template <typename U> friend class List;
 
   public:
     Node(){
-      this->next = NULL;
+      this->next = NULL; // initialize null for memory safety reasons
       AN += 1;  // keep track of allocations
     }
 
@@ -64,7 +64,7 @@ template <typename T> class List{
     public:
       // create an empty list
       List(){
-        this->head = NULL;
+        this->head = NULL; // memory safety reasons
       AN += 1;  // keep track of allocations
       }
       
@@ -75,7 +75,7 @@ template <typename T> class List{
         // replace the following line with your code!!!!!
 *********************************************************************************/
         cout<<"    ~List(): you need to write this method <-------------"<<endl;
-        head->~Node();
+        head->~Node(); // deallocate the head node!
         // delete head;
         DN += 1;  // keep track of deallocations
       }
@@ -83,7 +83,7 @@ template <typename T> class List{
       // check if the list is empty
       //   In this case, an empty list has a size of 0
       bool isEmpty(){
-        return (this->size() == 0);
+        return (this->size() == 0); // return t/f 
       }
 
       // addLast(item) adds an element item of type T at the end of the list
@@ -95,28 +95,28 @@ template <typename T> class List{
         // cout<<"    addLast(item): you need to write this method <-------------"<<endl;
 
         // create a new node and fill it with the item given.
-        Node<T>* pNodeToInsert = new Node<T>;
-        pNodeToInsert->element = item;
+        Node<T>* pNodeToInsert = new Node<T>; // initialize space in the heap
+        pNodeToInsert->element = item; // set the element to the item given
 
         Node<T>* curr = this->head; // create a current pointer to traverse the list
 
-        
-
         if(this->size() == 0){ // if the list is empty we insert at front!
-          this->head = pNodeToInsert;
-          pNodeToInsert->next = curr;
+          this->head = pNodeToInsert; // we set the front of the list to pNode
+          pNodeToInsert->next = curr; // we set pNode's pointer to curr. (in this case null)
         }
-        else{ // otherwise we insert behind the last object
+        // otherwise we insert behind the last object
+        else{ 
           // Increment to find the last node in the list
           while(curr->next != NULL){
-            curr = curr->next;
+            curr = curr->next; // move the curr to the next curr
           }
-          pNodeToInsert->next = curr->next;
-          curr->next = pNodeToInsert;
+
+          pNodeToInsert->next = curr->next; // set pNode's next to curr's next (in this case, null -> null) [as a precaution]
+          curr->next = pNodeToInsert; // set curr's next to pNode. essentially, setting curr's next to pNode, putting pNode last.
 
         }
 
-        // replace the last node with the pointer to the node to insert. 
+        // replace the last node with the pointer to the node to insert. [is this useless?]
         curr = pNodeToInsert;
         pNodeToInsert = curr->next;
         
@@ -132,16 +132,16 @@ template <typename T> class List{
 *********************************************************************************/
         // cout<<"    addFront(item): you need to write this method <-------------"<<endl;
 
-        Node<T>* pNodeToInsert = new Node<T>;
-        pNodeToInsert->element = item;
+        Node<T>* pNodeToInsert = new Node<T>; // create a new pNode.
+        pNodeToInsert->element = item; // assign element.
 
         Node<T>* curr = this->head; // create a current pointer to traverse the list
 
         
-        this->head = pNodeToInsert;
-        pNodeToInsert->next = curr;
+        this->head = pNodeToInsert; // set pNode to the head of the list.
+        pNodeToInsert->next = curr; // set pNode's next to curr (ie the rest of list)
     
-        // replace the last node with the pointer to the node to insert. 
+        // replace the last node with the pointer to the node to insert. [is this redundant]
         curr = pNodeToInsert;
         pNodeToInsert = curr->next;
 
@@ -163,18 +163,18 @@ template <typename T> class List{
 
           // Link the new node in the position indicated by index
           // start at the head of the list
-          int count = 0;
-          Node<T>* temp = this->head;
+          int count = 0; // initialize count to 0
+          Node<T>* temp = this->head; // create assign temp to head of list.
 
           // find the node before index position 
           while(temp != NULL && count < index-1){
-            count++;
-            temp = temp->next;
+            count++; // increment count
+            temp = temp->next; // move temp to the next in the list [searching for the variable]
           }
  
           // if insertions is to happen after the first node
           if(index > 0){
-            pNode->next = temp->next;
+            pNode->next = temp->next; 
             temp->next = pNode;
           }
           else if(index==0){  // in the first position
@@ -243,19 +243,19 @@ template <typename T> class List{
           Node<T>* pNode = this->head; // same here. 
           // Increment to find the last node in the list
           while(curr->next != NULL){
-            pNode = curr;
+            // move pNode along one behind current
+            pNode = curr; 
             curr = curr->next;
           }
           
-          pNode->next = NULL;
-          delete curr;
+          // set the pointer of pNode to null.
+          pNode->next = NULL; 
+          delete curr; // delete the 'last' node
         }
         
           cout<<"last item removed"<<endl; // your method MUST use this!
         }
       
-
-
       // removeAt(index) deletes the element and its node found at 
       // position index in the list
       void removeAt(int index){
