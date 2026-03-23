@@ -42,7 +42,11 @@ template <typename T> class Node{
 /********************************************************************************
         // replace the following line with your code!!!!!
 *********************************************************************************/
-      cout<<"    ~Node(): you need to write this method <-------------"<<endl;
+      // if the pointer leads to another node,
+      if(this->next != NULL){
+        // call the destructor on that one too
+        delete this->next;
+      }
 
       // DO NOT REMOVE THE NEXT LINE: keep at end of your destructor method!!
       DN += 1;  // keep track of deallocations
@@ -65,7 +69,10 @@ template <typename T> class List{
 /********************************************************************************
         // replace the following line with your code!!!!!
 *********************************************************************************/
-        cout<<"    ~List(): you need to write this method <-------------"<<endl;
+        
+        // if the list is not empty / exists, delete it
+        if(head != NULL)
+          delete head;
 
         DN += 1;  // keep track of deallocations
       }
@@ -78,25 +85,48 @@ template <typename T> class List{
 
       // addLast(item) adds an element item of type T at the end of the list
       void addLast(T item){
+        
+        Node<T>* pNode = new Node<T>; // initalize new node pointer
+        pNode->element = item; // assign value.
+        pNode->next = NULL; // since this will be inserted at the end, it will point to null.
 
-/********************************************************************************
-        // replace the following line with your code!!!!!
-*********************************************************************************/
-        cout<<"    addLast(item): you need to write this method <-------------"<<endl;
+        // if the list is empty, we just insert at front. 
+        if(this->size() == 0){
+          this->head = pNode;
+        }
+        else{
+          Node<T>* curr = this->head;
+      
+          // this while loop increments to the end of the list
+          while(curr->next != NULL){
+            curr = curr->next;
+          }
 
-        // cout<<"new node added at back!"<<endl; // your method MUST use this!
+          // add the pNode to the end!
+          curr->next = pNode;
+      }
+        cout<<"new node added at back!"<<endl; // your method MUST use this!
       }
 
       // addFront(item) creates and adds a new element node 
       // containing item at the front of the list
       void addFront(T item){
 
-/********************************************************************************
-        // replace the following line with your code!!!!!
-*********************************************************************************/
-        cout<<"    addFront(item): you need to write this method <-------------"<<endl;
+        Node<T>* pNode = new Node<T>;
+        pNode->element = item;
+        pNode->next = NULL; // safety
 
-        // cout<<"new node added at front !"<<endl; // your method MUST use this!
+        // if the list is empty we set the head to the new node
+        if(this->size() == 0){
+          this->head = pNode;
+        }
+        else{
+          // otherwise,
+          Node<T>* curr = this->head; // create curr pointer at head
+          pNode->next = curr; // set pNode's pointer to curr (the entire list)
+          this->head = pNode; // set the head of the list to pNode
+        }
+        cout<<"new node added at front !"<<endl; // your method MUST use this!
       }
 
       // addAt(index, item) creates and adds a new element node containing 
