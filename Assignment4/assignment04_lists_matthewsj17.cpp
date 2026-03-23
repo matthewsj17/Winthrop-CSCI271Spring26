@@ -73,6 +73,7 @@ template <typename T> class List{
         // if the list is not empty / exists, delete it
         if(head != NULL)
           delete head;
+          head = NULL; // prevent pointer from segfaulting
 
         DN += 1;  // keep track of deallocations
       }
@@ -91,7 +92,7 @@ template <typename T> class List{
         pNode->next = NULL; // since this will be inserted at the end, it will point to null.
 
         // if the list is empty, we just insert at front. 
-        if(this->size() == 0){
+        if(this->isEmpty()){
           this->head = pNode;
         }
         else{
@@ -117,7 +118,7 @@ template <typename T> class List{
         pNode->next = NULL; // safety
 
         // if the list is empty we set the head to the new node
-        if(this->size() == 0){
+        if(this->isEmpty()){
           this->head = pNode;
         }
         else{
@@ -209,12 +210,32 @@ template <typename T> class List{
       // removeLast() deletes the last element and its node in the list
       void removeLast(){
 
-/********************************************************************************
-        // replace the following line with your code!!!!!
-*********************************************************************************/
-        cout<<"    removeLast(): you need to write this method <-------------"<<endl;
+        // check for empty list
+        if(this->isEmpty()){
+          cout<<"The list is empty !"<<endl;
+        }
+        else if(this->size() == 1){
+          this->removeFront();
+        }
+        else{
+          Node<T>* curr = this->head;
+          Node<T>* tail = this->head;
 
-          // cout<<"last item removed"<<endl; // your method MUST use this!
+          // increment to the end of the list, keeping track of the node before curr.
+          while(curr->next != NULL){
+            tail = curr;
+            curr = curr->next;
+          }
+
+          // remove curr from the list
+          tail->next = NULL;
+          // delete curr. 
+          delete curr;
+          curr = NULL;
+
+          cout<<"last item removed"<<endl; // your method MUST use this!
+        }
+          
       }
 
       // removeAt(index) deletes the element and its node found at 
@@ -253,12 +274,21 @@ template <typename T> class List{
       // removeFront() deletes the last element and its node in the list
       void removeFront(){
        
-/********************************************************************************
-        // replace the following line with your code!!!!!
-*********************************************************************************/
-        cout<<"    removeFront(): you need to write this method <-------------"<<endl;
+        // check for empty list
+        if(this->isEmpty()){
+          cout<<"The list is empty !"<<endl;
+        }
+        else{
+          Node<T>* curr = this->head->next; // find the second node
+          Node<T>* temp = this->head; // finds stores the first value address
+          this->head = curr; // moves the start of the list to the second node
 
-          // cout<<"front item removed"<<endl; // your method MUST use this!
+         
+          delete temp; // deallocates the original 'head'
+          temp = NULL;
+        cout<<"front item removed"<<endl; // your method MUST use this!
+        }
+          
 
       }
 
@@ -266,10 +296,18 @@ template <typename T> class List{
       T getAt(int index){
         T res = -9999;        // initialize the results to invalid element
 
-/********************************************************************************
-        // replace the following line with your code!!!!!
-*********************************************************************************/
-        cout<<"    getAt(): you need to write this method <-------------"<<endl;
+        Node<T>* curr = this->head; // set curr to head
+        int temp = 0;
+
+        while(curr != NULL){ // while curr isn't head
+        
+          if(index == temp){ // see if we are at the right index
+            res = curr->element; // if we are assign result as the element value
+            break;
+          }
+          temp += 1; // if we aren't increment,
+          curr = curr->next; // and move to the next node
+        }
 
         return res;  // return the results -- YOU MUST USE THIS!!!!
       }
