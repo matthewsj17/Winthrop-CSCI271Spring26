@@ -295,22 +295,35 @@ template <typename T> class List{
 
       // getAt(int index) returns the element found at position index in the list
       T getAt(int index){
-        T res = -9999;        // initialize the results to invalid element
 
-        Node<T>* curr = this->head; // set curr to head
-        int temp = 0;
-
-        while(curr != NULL){ // while curr isn't head
-        
-          if(index == temp){ // see if we are at the right index
-            res = curr->element; // if we are assign result as the element value
-            break;
-          }
-          temp += 1; // if we aren't increment,
-          curr = curr->next; // and move to the next node
+        // check for empty list
+        if(this->isEmpty()){
+          cout<<"The list is empty !"<<endl;
+          return -9999;
         }
+        else{
+          T res = -9999;        // initialize the results to invalid element
 
-        return res;  // return the results -- YOU MUST USE THIS!!!!
+          Node<T>* curr = this->head; // set curr to head
+          int temp = 0;
+
+          while(curr != NULL){ // while curr isn't head
+          
+            if(index == temp){ // see if we are at the right index
+              res = curr->element; // if we are assign result as the element value
+              break;
+            }
+            temp += 1; // if we aren't increment,
+            curr = curr->next; // and move to the next node
+          }
+
+          if(res == -9999){
+            cout << "index out of bound !";
+          }
+          
+          return res;  // return the results -- YOU MUST USE THIS!!!!
+          
+        }
       }
 };
 
