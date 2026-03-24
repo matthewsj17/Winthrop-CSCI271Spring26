@@ -283,9 +283,10 @@ template <typename T> class List{
           Node<T>* temp = this->head; // finds stores the first value address
           this->head = curr; // moves the start of the list to the second node
 
-         
+          temp->next= NULL; // set the next to null to prevent the corruption.
+
           delete temp; // deallocates the original 'head'
-          temp = NULL;
+         
         cout<<"front item removed"<<endl; // your method MUST use this!
         }
           
