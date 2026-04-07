@@ -233,8 +233,46 @@ class List<T> {
     return res;
   }
 
+  // CODE THAT I AM ADDING, 
 
-}
+  public List<T> splitAt(int index){
+    // Add some sort of size checking??
+    if(this.isEmpty()){
+      System.out.println("The list is empty ...! ");
+      return null;
+    }
+  
+
+      Node<T> curr = this.head;
+      // Increment to position in list.
+      for(int i = 0; i < index-1; i++){
+        curr = curr.getNext();
+      }
+
+
+      
+      // Assign the next value to the head of a new list.
+      List<T> NL = new List<T>(); // create new list
+      NL.head = curr.getNext(); // assign the beginning of the new list to the node after the split point
+
+      Node<T> newCurr = NL.head;
+      // find the NL size.
+      int count = 0;
+      while(newCurr != null){
+        count++;
+        newCurr = newCurr.getNext();
+      }
+      NL.size = count;
+      
+      // Kill the old list at the value, effectively splitting it.
+      curr.setNext(null); // curr->next (Original List) is now null, removing the tail that is now NL from the original list.
+      return NL;
+    }
+    
+
+
+  }
+
 
 // The class for the Main Program
 public class assignment5 {
@@ -260,6 +298,10 @@ public class assignment5 {
       System.out.println( "7: delete front");
       System.out.println( "8: delete at index");
       System.out.println( "9: exit");
+
+      // New Options
+      System.out.println( "88: split at index");
+
       ch = sc.nextInt();
 
       switch (ch) {
@@ -303,6 +345,21 @@ public class assignment5 {
         case 9:
           quit = true;
           break;
+        
+        case 88:
+          System.out.println( "enter index:");
+          index = sc.nextInt();
+          System.out.println( "Original List");
+          list.displayAll();
+          List<Integer> NL = new List<>();
+          NL = list.splitAt(index);
+          System.out.println( "Modified List: ");
+          list.displayAll();
+          System.out.println( "Newly Created List: ");
+          NL.displayAll();
+
+          break;
+
         default:
           System.out.println( "invalid selection");
       }
