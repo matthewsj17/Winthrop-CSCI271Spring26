@@ -43,7 +43,7 @@ class Node<T> {
 }
 
 // List Class: ( Generic LinkedList class)
-class List<T> {
+class List<T extends Comparable<? super T>> {
 
   // Generic Node instance
   private Node<T> head;
@@ -242,15 +242,12 @@ class List<T> {
       return null;
     }
   
-
       Node<T> curr = this.head;
       // Increment to position in list.
       for(int i = 0; i < index-1; i++){
         curr = curr.getNext();
       }
 
-
-      
       // Assign the next value to the head of a new list.
       List<T> NL = new List<T>(); // create new list
       NL.head = curr.getNext(); // assign the beginning of the new list to the node after the split point
@@ -269,8 +266,22 @@ class List<T> {
       return NL;
     }
     
+  void insertSorted(T item) { 
+    
+    // add item in a new Node at sorted position
+    Node<T> newNode = new Node<>(item); // create new node
+    Node<T> curr = this.head; // create curr to increment through the list.
+
+    while(curr != null){
+      // how am i supposed to compare two T values? using implemenation of compared??
+      curr.setNext(curr.getNext()); // increment through the list
 
 
+    } 
+
+    
+    
+  }
   }
 
 
@@ -366,3 +377,5 @@ public class assignment5 {
     } while(!quit);
   }
 }
+
+
