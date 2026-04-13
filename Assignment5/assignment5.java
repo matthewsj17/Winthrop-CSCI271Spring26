@@ -235,6 +235,21 @@ class List<T extends Comparable<? super T>> {
 
   // CODE THAT I AM ADDING, 
 
+
+  /*****************************<splitAt()>****************************
+  * Description: takes a list, and splits it into two seperate list
+  *
+  * Parameters: and integer index is supplied
+  *
+  * Pre: a list is created and an index is supplied.
+  *
+  * Post: the list is split into two, and the second portion is returned to the user
+  *
+  * Returns: returns the second list, and alters the first in place.
+  *
+  * Called by: InsertionSort()
+  * Calls: isEmpty(), getNext(), setNext()
+  ************************************************************************/
   public List<T> splitAt(int index){
     // Add some sort of size checking??
     if(this.isEmpty()){
@@ -277,6 +292,21 @@ class List<T extends Comparable<? super T>> {
       return NL;
     }
     
+
+  /*****************************<insertSorted()>****************************
+  * Description: takes a list and sorts it in ascending order
+  *
+  * Parameters: item, of type T.
+  *
+  * Pre: a list must be created, and already in sorted order.
+  *
+  * Post: the item is inserted into the list in ascending order.
+  *
+  * Returns: returns nothing, but alters the list in place
+  *
+  * Called by: InsertionSort()
+  * Calls: addFront(), getElement(), Node(), setNext(), getNext()
+  ************************************************************************/
   void insertSorted(T item) { 
 
       // [11,22,33,44,55,66,77,88]
@@ -337,9 +367,23 @@ class List<T extends Comparable<? super T>> {
       } 
     }
   
+  /*****************************<InsertionSort()>****************************
+  * Description: takes a list and sorts it in ascending order
+  *
+  * Parameters: none
+  *
+  * Pre: a list must be created, of at least one element or greater.
+  *
+  * Post: the list is sorted and altered inplace
+  *
+  * Returns: returns nothing, but alters the list in place
+  *
+  * Called by: InsertionSort()
+  * Calls: insertSorted(), size(), splitAt(), InsertionSort(), getElement(), getNext()
+  ************************************************************************/
     void InsertionSort(){
 
-      if(this.size == 1){
+      if(this.size() == 1){
         // we've done all the recursion we need!
         return;
       }
@@ -409,7 +453,7 @@ public class assignment5 {
       // New Options
       System.out.println( "11: insert sorted");
       System.out.println( "88: split at index");
-      System.out.println( "99: split at index");
+      System.out.println( "99: insertion sort!");
 
       ch = sc.nextInt();
 
