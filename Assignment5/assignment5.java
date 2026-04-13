@@ -267,23 +267,66 @@ class List<T extends Comparable<? super T>> {
     }
     
   void insertSorted(T item) { 
+
+      // [11,22,33,44,55,66,77,88]
+    if(head == null){
+      addFront(item);
+    }
+    else{
     
-    // add item in a new Node at sorted position
-    Node<T> newNode = new Node<>(item); // create new node
-    Node<T> curr = this.head; // create curr to increment through the list.
+      // add item in a new Node at sorted position
+      Node<T> nodeToSort = new Node<>(item); // create new node
+      T sortVal = nodeToSort.getElement(); // isolate the value for easier access
 
-    while(curr != null){
-      // how am i supposed to compare two T values? using implemenation of compared??
-      curr.setNext(curr.getNext()); // increment through the list
+      Node<T> curr = this.head; // create curr to increment through the list.
+      Node<T> temp = curr; // create temp to hold addresses
+      boolean quit = false;
+      
+      
 
+      while(!quit){
+              
+        switch(sortVal.compareTo(curr.getElement())){ 
+        
+          case -1: // the item is smaller than the curr, IE we need to insert here!
 
-    } 
+            if(curr == this.head){
+              addFront(item);
+            }
+            else{
+            nodeToSort.setNext(curr);
+            temp.setNext(nodeToSort);
+            }
+            quit = true;
+            break;
+        
+          case 0: // the item is equal to the curr, so we insert after!
+            nodeToSort.setNext(curr);
+            temp.setNext(nodeToSort);
+            quit = true;
+            break;
 
-    
-    
+          case 1: // the item is less than curr, so we increment!
+
+            if(curr.getNext() == null){ // if its the last item, we insert the nodeToSort last.
+              nodeToSort.setNext(curr.getNext());
+              curr.setNext(nodeToSort);
+              quit = true;
+            }
+            else{
+              temp = curr;
+              curr = curr.getNext();} // otherwise we increment.
+            break;
+          
+          default:
+            // something broke!
+            break;
+          }
+        }
+      } 
+    }
   }
-  }
-
+  
 
 // The class for the Main Program
 public class assignment5 {
@@ -311,6 +354,7 @@ public class assignment5 {
       System.out.println( "9: exit");
 
       // New Options
+      System.out.println( "11: insert sorted");
       System.out.println( "88: split at index");
 
       ch = sc.nextInt();
@@ -357,6 +401,11 @@ public class assignment5 {
           quit = true;
           break;
         
+        case 11:
+          System.out.println( "enter item to insert:");
+          item = sc.nextInt();
+          list.insertSorted(item);
+          break;
         case 88:
           System.out.println( "enter index:");
           index = sc.nextInt();
