@@ -252,17 +252,28 @@ class List<T extends Comparable<? super T>> {
       List<T> NL = new List<T>(); // create new list
       NL.head = curr.getNext(); // assign the beginning of the new list to the node after the split point
 
+      // Kill the old list at the value, effectively splitting it.
+      curr.setNext(null); // curr->next (Original List) is now null, removing the tail that is now NL from the original list.
+
       Node<T> newCurr = NL.head;
-      // find the NL size.
+      Node<T> temp = this.head;
+
+      // find the list's new size.
       int count = 0;
+      while(temp != null){
+        count++;
+        temp = temp.getNext();
+      }
+      this.size = count;
+      // find the NL size.
+      count = 0;
       while(newCurr != null){
         count++;
         newCurr = newCurr.getNext();
       }
       NL.size = count;
       
-      // Kill the old list at the value, effectively splitting it.
-      curr.setNext(null); // curr->next (Original List) is now null, removing the tail that is now NL from the original list.
+      
       return NL;
     }
     
@@ -325,7 +336,44 @@ class List<T extends Comparable<? super T>> {
         }
       } 
     }
+  
+    void InsertionSort(){
+
+      if(this.size == 1){
+        // we've done all the recursion we need!
+        return;
+      }
+      else{
+        // Splits L in the middle element by calling L.plitAt(index(=(N/2) 
+        // where N is the number of elements in L (+1 for odd N). 
+        // The first half will be in L1 and the second in L2. 
+
+        // Finding Index Value
+        int index = this.size();
+        if((this.size() % 2) == 1){
+          index = (this.size() / 2) + 1;
+        }
+        else{index = this.size() / 2;}
+        
+        // Create second list.
+        List<T> L2 = new List<>();
+        L2 = this.splitAt(index);
+
+        // Recursively calls insertionSort(L1)
+        this.InsertionSort();
+        // Recursively calls insertionSort(L2)
+        L2.InsertionSort();
+
+        // Then combines L1 and L2 by inserting all the elements of L2 into L1 using your method 
+        // insertSorted() from question 2. 
+
+        this.insertSorted(L2.head.getElement());
+      }
   }
+  }
+
+  // 56, 35, 42, 29
+  
   
 
 // The class for the Main Program
@@ -356,6 +404,7 @@ public class assignment5 {
       // New Options
       System.out.println( "11: insert sorted");
       System.out.println( "88: split at index");
+      System.out.println( "99: split at index");
 
       ch = sc.nextInt();
 
@@ -418,6 +467,15 @@ public class assignment5 {
           System.out.println( "Newly Created List: ");
           NL.displayAll();
 
+          break;
+        
+        case 99:
+          if(!list.isEmpty()){
+            list.InsertionSort();
+          }
+          else{
+            System.out.println( "The list is empty and cannot be sorted!");
+          }
           break;
 
         default:
