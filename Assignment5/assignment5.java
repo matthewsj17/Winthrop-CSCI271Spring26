@@ -367,8 +367,13 @@ class List<T extends Comparable<? super T>> {
         // Then combines L1 and L2 by inserting all the elements of L2 into L1 using your method 
         // insertSorted() from question 2. 
 
-        this.insertSorted(L2.head.getElement());
+        // insert every item of L2 into L1.
+        Node<T> currL2 = L2.head;
+        while(currL2 != null){
+        this.insertSorted(currL2.getElement()); // this isnt' right!
+        currL2 = currL2.getNext();
       }
+    }
   }
   }
 
