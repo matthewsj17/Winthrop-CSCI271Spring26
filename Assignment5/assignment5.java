@@ -282,25 +282,20 @@ class List<T extends Comparable<? super T>> {
     Node<T> temp = this.head; // create a temp value for the old list so we save curr.
 
     // find the list's new size.
-    int count = 0; 
     // increment temp to the end of the list,
+    this.size = 0; // set to 0 for accuracy.
     while(temp != null){
-      count++; // incrementing count every time 
+      this.size++; // incrementing count every time 
       temp = temp.getNext();
     }
-    this.size = count; // set the size to the new size.
     // find the NL size.
-
     // find L2's size
-    count = 0; // reset count
-
     // increment newCurr until the end of the list
     while(newCurr != null){
-      count++; // incrementing count every time
+      NL.size++; // incrementing count every time
       newCurr = newCurr.getNext(); 
     }
-    NL.size = count; // set this to the size!
-    
+  
     return NL; // return the new list to the user!
   }
     
@@ -392,6 +387,8 @@ class List<T extends Comparable<? super T>> {
             break;
           }
         }
+        // increment size!
+        this.size++;
       } 
     }
   
