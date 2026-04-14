@@ -1,5 +1,19 @@
 // Java Program to Implement Generic Linked List
 
+
+/*************************************************************************
+* Project 5 for CSCI 271-001 Spring 2026
+*
+* Author: Jake Matthews
+* OS: Windows 11
+* Compiler: javac 21.0.9
+* Date: April 13th, 2026
+*
+* Purpose
+* This program allows operations to be done on lists implemented with linked nodes.
+*
+*************************************************************************/
+
 // Importing all input output classes
 import java.io.*;
 import java.util.Scanner;
