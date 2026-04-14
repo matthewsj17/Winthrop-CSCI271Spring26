@@ -349,6 +349,8 @@ class List<T extends Comparable<? super T>> {
             else{
             nodeToSort.setNext(curr); // set the next of the node to curr
             temp.setNext(nodeToSort); // set the next of the temp pointer (a tail of sorts) to the nodes.
+            // increment size!
+            this.size++;
             }
             quit = true; // either case will result in node insertion, so we can stop looping
             break;
@@ -364,6 +366,8 @@ class List<T extends Comparable<? super T>> {
             else{
             nodeToSort.setNext(curr); // set the next of the node to curr
             temp.setNext(nodeToSort); // set the next of the temp pointer (a tail of sorts) to the nodes
+            // increment size!
+            this.size++;
             }
             quit = true; // either case will result in node insertion, so we can stop looping
             break;
@@ -374,6 +378,8 @@ class List<T extends Comparable<? super T>> {
               nodeToSort.setNext(curr.getNext()); // set the next to curr's next, or null
               curr.setNext(nodeToSort); // set the final nodes next pointer to the new node.
               quit = true; // we can quit now!
+              // increment size!
+              this.size++;
             }
             // otherwise
             else{
@@ -387,8 +393,7 @@ class List<T extends Comparable<? super T>> {
             break;
           }
         }
-        // increment size!
-        this.size++;
+        
       } 
     }
   
