@@ -252,45 +252,57 @@ class List<T extends Comparable<? super T>> {
   ************************************************************************/
   public List<T> splitAt(int index){
     // Add some sort of size checking??
+
+    // If empty, say that!
     if(this.isEmpty()){
       System.out.println("The list is empty ...! ");
       return null;
     }
-  
-      Node<T> curr = this.head;
-      // Increment to position in list.
-      for(int i = 0; i < index-1; i++){
-        curr = curr.getNext();
-      }
-
-      // Assign the next value to the head of a new list.
-      List<T> NL = new List<T>(); // create new list
-      NL.head = curr.getNext(); // assign the beginning of the new list to the node after the split point
-
-      // Kill the old list at the value, effectively splitting it.
-      curr.setNext(null); // curr->next (Original List) is now null, removing the tail that is now NL from the original list.
-
-      Node<T> newCurr = NL.head;
-      Node<T> temp = this.head;
-
-      // find the list's new size.
-      int count = 0;
-      while(temp != null){
-        count++;
-        temp = temp.getNext();
-      }
-      this.size = count;
-      // find the NL size.
-      count = 0;
-      while(newCurr != null){
-        count++;
-        newCurr = newCurr.getNext();
-      }
-      NL.size = count;
-      
-      
-      return NL;
+    // If index out of bounds, say that!
+    if(index > this.size()-1 || index < 0){
+      System.out.println("Index out of bounds!! ");
+      return null;
     }
+  
+    Node<T> curr = this.head; // set curr to head of list
+    
+    // Increment to position in list.
+    for(int i = 0; i < index-1; i++){
+      curr = curr.getNext();
+    }
+
+    // Assign the next value to the head of a new list.
+    List<T> NL = new List<T>(); // create new list
+    NL.head = curr.getNext(); // assign the beginning of the new list to the node after the split point
+
+    // Kill the old list at the value, effectively splitting it.
+    curr.setNext(null); // curr->next (Original List) is now null, removing the tail that is now NL from the original list.
+
+    Node<T> newCurr = NL.head; // create a 2nd curr with the new list
+    Node<T> temp = this.head; // create a temp value for the old list so we save curr.
+
+    // find the list's new size.
+    int count = 0; 
+    // increment temp to the end of the list,
+    while(temp != null){
+      count++; // incrementing count every time 
+      temp = temp.getNext();
+    }
+    this.size = count; // set the size to the new size.
+    // find the NL size.
+
+    // find L2's size
+    count = 0; // reset count
+
+    // increment newCurr until the end of the list
+    while(newCurr != null){
+      count++; // incrementing count every time
+      newCurr = newCurr.getNext(); 
+    }
+    NL.size = count; // set this to the size!
+    
+    return NL; // return the new list to the user!
+  }
     
 
   /*****************************<insertSorted()>****************************
@@ -310,56 +322,72 @@ class List<T extends Comparable<? super T>> {
   void insertSorted(T item) { 
 
       // [11,22,33,44,55,66,77,88]
+
+    // if the list is empty, we just insert at the front. 
     if(head == null){
       addFront(item);
     }
+
+    // otherwise...
     else{
-    
       // add item in a new Node at sorted position
       Node<T> nodeToSort = new Node<>(item); // create new node
       T sortVal = nodeToSort.getElement(); // isolate the value for easier access
 
       Node<T> curr = this.head; // create curr to increment through the list.
       Node<T> temp = curr; // create temp to hold addresses
-      boolean quit = false;
-      
-      
-
+      boolean quit = false; // use a boolean variable to keep turn loops on and off.
+       
+      // continually loop
       while(!quit){
-              
+         
+        // use a switch to compare the sortVal to the current value!
         switch(sortVal.compareTo(curr.getElement())){ 
         
           case -1: // the item is smaller than the curr, IE we need to insert here!
 
+            // if curr points to the head, we just add to the front.
             if(curr == this.head){
               addFront(item);
             }
+            // otherwise,
             else{
-            nodeToSort.setNext(curr);
-            temp.setNext(nodeToSort);
+            nodeToSort.setNext(curr); // set the next of the node to curr
+            temp.setNext(nodeToSort); // set the next of the temp pointer (a tail of sorts) to the nodes.
             }
-            quit = true;
+            quit = true; // either case will result in node insertion, so we can stop looping
             break;
         
-          case 0: // the item is equal to the curr, so we insert after!
-            nodeToSort.setNext(curr);
-            temp.setNext(nodeToSort);
-            quit = true;
+          case 0: // the item is equal to the curr, so we insert here!
+
+            // if curr points to the head, we just add to the front.
+            if(curr == this.head){
+              addFront(item);
+            }
+            // otherwise,
+
+            else{
+            nodeToSort.setNext(curr); // set the next of the node to curr
+            temp.setNext(nodeToSort); // set the next of the temp pointer (a tail of sorts) to the nodes
+            }
+            quit = true; // either case will result in node insertion, so we can stop looping
             break;
 
           case 1: // the item is less than curr, so we increment!
 
             if(curr.getNext() == null){ // if its the last item, we insert the nodeToSort last.
-              nodeToSort.setNext(curr.getNext());
-              curr.setNext(nodeToSort);
-              quit = true;
+              nodeToSort.setNext(curr.getNext()); // set the next to curr's next, or null
+              curr.setNext(nodeToSort); // set the final nodes next pointer to the new node.
+              quit = true; // we can quit now!
             }
+            // otherwise
             else{
-              temp = curr;
-              curr = curr.getNext();} // otherwise we increment.
+              temp = curr; // move temp one, 
+              curr = curr.getNext();} // move curr one.
+              // otherwise we increment.
             break;
           
-          default:
+          default: // this should never be called, as compareTo returns -1, 0, or 1 ONLY.
             // something broke!
             break;
           }
@@ -393,15 +421,15 @@ class List<T extends Comparable<? super T>> {
         // The first half will be in L1 and the second in L2. 
 
         // Finding Index Value
-        int index = this.size();
-        if((this.size() % 2) == 1){
-          index = (this.size() / 2) + 1;
+        int index = this.size(); // allocate index to list size.
+        if((this.size() % 2) == 1){ // if list size is odd,
+          index = (this.size() / 2) + 1; // we find the index and add one to it.
         }
-        else{index = this.size() / 2;}
+        else{index = this.size() / 2;} // if the list size is even, we find the midpoint.
         
         // Create second list.
         List<T> L2 = new List<>();
-        L2 = this.splitAt(index);
+        L2 = this.splitAt(index); // split the current list and assign the second half to L2
 
         // Recursively calls insertionSort(L1)
         this.InsertionSort();
@@ -412,11 +440,11 @@ class List<T extends Comparable<? super T>> {
         // insertSorted() from question 2. 
 
         // insert every item of L2 into L1.
-        Node<T> currL2 = L2.head;
-        while(currL2 != null){
-        this.insertSorted(currL2.getElement()); // this isnt' right!
-        currL2 = currL2.getNext();
-      }
+        Node<T> currL2 = L2.head; // create a second curr pointer to the second list.
+        while(currL2 != null){ // while this is a valid pointer, 
+        this.insertSorted(currL2.getElement()); // we insert items in sorted order from L2 into 'this' list.
+        currL2 = currL2.getNext(); // then we increment currL2 to the next node!
+        }
     }
   }
   }
@@ -504,7 +532,7 @@ public class assignment5 {
           item = sc.nextInt();
           list.insertSorted(item);
           break;
-        case 88:
+        case 88: // not sure if this is how you wanted it!
           System.out.println( "enter index:");
           index = sc.nextInt();
           System.out.println( "Original List");
