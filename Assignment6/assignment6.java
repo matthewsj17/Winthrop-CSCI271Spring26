@@ -287,26 +287,26 @@ class BinaryTree<T extends Comparable<T>> {
  * Calls: findRecursively()
  ************************************************************************/
   private boolean findRecursively(Node<T> root, T item){
+    boolean returnVal = false;
 
     if(root == null) // if the root is null, then we didn't find the item in the tree.
-      return false;
+      returnVal = false;
     else if(root.element == item){ // 
-      return true;
+      returnVal = true;;
     }
     else{
       int compareVal = item.compareTo(root.element);
       if(compareVal < 0){
-        return findRecursively(root.left, item);
+        returnVal = findRecursively(root.left, item);
       }
       else if(compareVal > 0){
-        return findRecursively(root.right, item);
+        returnVal = findRecursively(root.right, item);
       }
       else{ // if its not the same, and not any smaller or larger, than its just not there.
-        return false; // may be redundant?
+        returnVal = false; // may be redundant?
       }
-
-
     }
+    return returnVal;
   }
 
   // ********************************** delete(T item) **********************************
