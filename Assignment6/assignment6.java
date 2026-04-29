@@ -74,7 +74,7 @@ class BinaryTree<T extends Comparable<T>> {
   public int size(){ // a method to return the number of elements in the tree
     // System.out.println("BinaryTree.size() method has not been implemented yet!!!!");
     // return -1;
-    return sizeRecursively(this.root);
+    return sizeRecursively(this.root); // call private one
   }
 // this may be wrong i'm just spitballing here -Jake 1:36pm 4/21/26
 // no way sweet it works. -Jake 1:43pm 4/21/26
@@ -163,7 +163,7 @@ class BinaryTree<T extends Comparable<T>> {
  * Calls: getMinRecursivelyJake()
  ************************************************************************/
   public T getMin(){
-    return getMinRecursivelyJake(this.root);
+    return getMinRecursivelyJake(this.root); // call private functions
    
   }
 
@@ -268,7 +268,7 @@ class BinaryTree<T extends Comparable<T>> {
   public boolean find(T item){
     // System.out.println("BinaryTree.find() method has not been implemented yet!!!!");
     // return false;
-    return findRecursively(root, item);
+    return findRecursively(root, item); // call private function
   }
 
  /*****************************findRecursively()****************************
@@ -287,26 +287,26 @@ class BinaryTree<T extends Comparable<T>> {
  * Calls: findRecursively()
  ************************************************************************/
   private boolean findRecursively(Node<T> root, T item){
-    boolean returnVal = false;
+    boolean returnVal = false; // default to false.
 
     if(root == null) // if the root is null, then we didn't find the item in the tree.
       returnVal = false;
-    else if(root.element == item){ // 
+    else if(root.element == item){ // if the element is the item, we've found it!
       returnVal = true;;
     }
     else{
-      int compareVal = item.compareTo(root.element);
-      if(compareVal < 0){
+      int compareVal = item.compareTo(root.element); // compare the item to the element
+      if(compareVal < 0){ // if its less than 0, we need to look left!
         returnVal = findRecursively(root.left, item);
       }
-      else if(compareVal > 0){
+      else if(compareVal > 0){ // if its greater than 0, we need to look right!
         returnVal = findRecursively(root.right, item);
       }
       else{ // if its not the same, and not any smaller or larger, than its just not there.
         returnVal = false; // may be redundant?
       }
     }
-    return returnVal;
+    return returnVal; // return value to user.
   }
 
   // ********************************** delete(T item) **********************************
